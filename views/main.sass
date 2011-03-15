@@ -1,0 +1,122 @@
+// mixins
+
+=border-radius($radius)
+  border-radius: $radius
+  //behavior: url('/border-radius.htc')
+  -moz-border-radius: $radius
+  -webkit-border-radius: $radius
+  
+=border-radius-bottom($radius)
+  border-bottom-left-radius: $radius
+  border-bottom-right-radius: $radius
+  //behavior: url('/border-radius.htc')
+  -moz-border-radius-bottomleft: $radius
+  -moz-border-radius-bottomright: $radius
+  -webkit-border-bottom-left-radius: $radius
+  -webkit-border-bottom-right-radius: $radius
+
+=border-radius-top($radius)
+  border-top-left-radius: $radius
+  border-top-right-radius: $radius
+  //behavior: url('/border-radius.htc')
+  -moz-border-radius-topleft: $radius
+  -moz-border-radius-topright: $radius
+  -webkit-border-top-left-radius: $radius
+  -webkit-border-top-right-radius: $radius
+  
+=simple_gradient($start_color, $end_color)
+  background: $start_color
+  background-image: -moz-linear-gradient(top, $start_color 0%, $end_color 100%) 
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$start_color), color-stop(100%,$end_color))
+  //filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$start_color', endColorstr='$end_color',GradientType=0 )
+  
+=simple_gradient_tri($start, $stop, $end)
+  background: $start
+  background-image: -moz-linear-gradient(top, $start 0%, $stop 50%, $end 100%) 
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$start), color-stop(50%,$start), color-stop(100%,$end))
+  //filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$start', endColorstr='$end',GradientType=0 )
+
+=gradient_tri($start, $stop, $end, $perc1, $perc2, $perc3)
+  background: $start
+  background-image: -moz-linear-gradient(top, $start $perc1, $stop $perc2, $end $perc3) 
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop($perc1,$start), color-stop($perc2,$stop), color-stop($perc3,$end))
+
+=simple_gradient_half($start_color, $stop_color, $restart_color, $end_color)
+  background: $end_color
+  background-image: -moz-linear-gradient(top, $start_color 0%, $stop_color 50%, $restart_color 51%, $end_color 100%)
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$start_color), color-stop(50%,$stop_color), color-stop(51%,$restart_color), color-stop(100%,$end_color))
+  //filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$start_color', endColorstr='$end_color',GradientType=0 )
+
+=box-shadow($x, $y, $radius, $color)
+  -moz-box-shadow: $x $y $radius $color
+  -webkit-box-shadow: $x $y $radius $color
+  box-shadow: $x $y $radius $color
+
+// clearfix
+
+*, html, body
+  margin: 0
+  padding: 0
+
+html, body 
+  height: 100%     
+  max-height: 100%
+  
+img
+  border: 0
+
+ul 
+  list-style-type: none
+
+li
+  display: inline
+
+.clear
+  clear: both
+
+a 
+  text-decoration: none
+  
+  
+// style
+
+$bg: #DDD
+$bg_cont: #FFF
+$txt: #222
+$main: #999
+$alt: #666
+$links: #444
+
+@font-face
+  font-family: Guardian
+  src: url( /fonts/guardian.eot ) /* IE 6,7,8 */  
+  
+@font-face
+  font-family: Guardian
+  src: url('/fonts/guardian.otf')
+  
+body
+  background: $bg
+  font-family: sans-serif, Helvetica, Arial, Verdana
+  color: $txt
+  font-size: 120%
+
+a
+  color: $links
+a:hover
+  color: $links + #111
+  
+#container
+  width: 85%
+  margin: 0 auto 40px 
+  padding-top: 30px
+  
+p 
+  font-size: 0.9em
+  
+h1 
+  margin-bottom: 20px
+  font-size: 2em
+  span
+    font-size: 0.55em
+    display: block
