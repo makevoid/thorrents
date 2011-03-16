@@ -5,7 +5,7 @@
 ### Features
 
 - results ordered by seeds
-- magnet link
+- magnet links
 - fb share
 
 
