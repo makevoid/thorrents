@@ -2,10 +2,12 @@
   %script{ src: "/js/search.js", type: "text/javascript" }
 - content_for :jquery do
   :plain
-    $("#results li").live("click", function(){
+    $("#results li").live("click", function(evt){
       var url = $(this).children("a").attr("href") 
       if (url)
         document.location = url
+        
+      evt.preventDefault()
     })
 
 #search
