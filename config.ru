@@ -1,5 +1,5 @@
 path = File.expand_path "../", __FILE__
 
 
-require "#{path}/app"
-run App
+require "#{path}/thorrents"
+run Thorrents

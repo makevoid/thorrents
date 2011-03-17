@@ -1,6 +1,19 @@
-%section
-  %h2 Hey!
-  
-  %article
-    %p This website will be available soon... Stay tuned!
+- content_for :head do
+  %script{ src: "/js/search.js", type: "text/javascript" }
 
+
+#search
+  %form{ action: "/search", method: "get" }
+    %input{ name: "q", type: "text" }
+    %input{ type: "submit", value: "search", class: "submit"}
+    
+%ul#results
+  %li 
+
+
+#advices
+  %p Recommended clients:
+  %ul
+    %li Transmission (mac/linux)
+    %li uTorrent (windows)
+    
