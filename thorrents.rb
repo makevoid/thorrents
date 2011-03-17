@@ -35,7 +35,7 @@ class Thorrents < Sinatra::Base
     thor = Thorz.new params[:query]
     thor.search
     
-    thor.results.to_json
+    { results: thor.results }.to_json
   end
 
   get '/css/main.css' do

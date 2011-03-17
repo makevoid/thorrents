@@ -1,0 +1,26 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    haml (3.0.25)
+    nokogiri (1.4.4)
+    rack (1.2.2)
+    rack-flash (0.1.1)
+      rack
+    sinatra (1.2.1)
+      rack (~> 1.1)
+      tilt (>= 1.2.2, < 2.0)
+    sinatra-content-for (0.2)
+      sinatra
+    tilt (1.2.2)
+    voidtools (0.2.2)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  haml
+  nokogiri
+  rack-flash
+  sinatra
+  sinatra-content-for
+  voidtools
