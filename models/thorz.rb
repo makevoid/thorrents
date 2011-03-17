@@ -1,6 +1,6 @@
-require 'nokogiri'
 require 'net/http'
 require 'cgi'
+require 'nokogiri'
 
 class Thorz
   URL = "http://thepiratebay.org/search/%s/0/7/0"

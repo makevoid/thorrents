@@ -9,3 +9,5 @@ gem 'rack-flash'
 # gem 'dm-mysql-adapter'
 
 gem 'voidtools'
+
+gem "nokogiri"
