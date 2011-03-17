@@ -1,3 +1,58 @@
+// buttons
+
+@mixin rounded($border)
+  -webkit-border-radius= $border
+  -moz-border-radius= $border
+  border-radius= $border
+
+@mixin shadow
+  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2)
+  -moz-box-shadow: 0 1px 2px rgba(0,0,0,.2)
+  box-shadow: 0 1px 2px rgba(0,0,0,.2)
+
+@mixin gradient($top, $bottom)
+  background-color= $bottom
+  background= -webkit-gradient(linear, left top, left bottom, from($top), to($bottom))
+  background= -moz-linear-gradient(top, $top,  $bottom)
+  filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$top}', endColorstr='#{$bottom}')
+
+@mixin button
+  display: inline-block
+  padding: .1em 1em .12em
+  outline: none
+  cursor: pointer
+  text-align: center
+  text-decoration: none
+  font-size: 1.1em
+  @include rounded('.5em')
+  // this determines Mozilla to show the padding
+  border: solid 1px #ccc
+  @include shadow
+  text-shadow: 0 1px 1px rgba(0,0,0,.3)
+  &:hover
+    text-decoration: none
+  &:active
+    position: relative
+    top: 1px
+
+@mixin color($background)
+  border: solid 1px darken($background, 3%)
+  @include gradient(lighten($background, 13%), $background)
+  color= mix(#fff, $background, 90%)
+  &:hover
+    @include gradient(lighten($background, 10%), darken($background, 5%))
+  &:active
+    @include gradient($background, lighten($background, 10%))
+    color= mix(#fff, $background, 70%)
+
+button,
+input[type="reset"],
+input[type="button"],
+input[type="submit"],
+input[type="file"] > input[type="button"]
+  &::-moz-focus-inner
+    border: none
+
 // mixins
 
 =border-radius($radius)
@@ -127,14 +182,53 @@ input
   padding: 3px 6px
 input.submit
   margin: 0 0 0 10px
-  padding: 0 0 20px 0
+  padding: 0 0 25px 0
+
+input[type='submit'], input.submit
+  +button
+  +color($main)  
+  
+input[type='search'], input.search
+  -webkit-appearance: searchfield
+  -webkit-box-sizing: border-box
+  zoom: 1.3
+  width: 300px
+  
   
 #advices
   margin-top: 100px
   
-#results
+#results  
+  margin: 20px 0
   ul
     li
       display: block
-      margin: 5px 0
-  
+      margin: 6px 0
+      +simple_gradient($bg+#222, $bg)
+      float: left
+      clear: left
+      padding: 5px 20px 5px 0
+      +rounded(10px)
+      border: 1px solid $bg - #222
+      cursor: pointer
+      span
+        width: 50px
+        display: block
+        float: left
+        text-align: right
+        margin-right: 15px
+        font-size: 0.9em
+    li:hover
+      +simple_gradient($bg - #333, $bg - #777)
+      a
+        color: #FFF
+      
+    li.heading
+      border: 1px solid #333
+      border-top: 0
+      border-right: 0
+      border-left: 0            
+      width: 500px
+      background: $bg
+      +rounded(0px)      
+      cursor: auto

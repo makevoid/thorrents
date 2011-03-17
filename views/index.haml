@@ -1,14 +1,21 @@
 - content_for :head do
   %script{ src: "/js/search.js", type: "text/javascript" }
-
+- content_for :jquery do
+  :plain
+    $("#results li").live("click", function(){
+      var url = $(this).children("a").attr("href") 
+      if (url)
+        document.location = url
+    })
 
 #search
   %form{ action: "/search", method: "get" }
-    %input{ name: "q", type: "text" }
+    %input{ name: "q", type: "search" }
     %input{ type: "submit", value: "search", class: "submit"}
     
 %ul#results
   %li 
+.clear
 
 /
   #advices
