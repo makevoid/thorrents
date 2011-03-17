@@ -5,9 +5,10 @@ $(function(){
     var url = $(this).attr("action")
     var query = $(this).children("input[name=q]").first().val()
     var json_url = url+"/"+query
-    if (rack_env == "development")
+    if (rack_env == "development") {
       json_url = "http://thorrents.makevoid.com/search/"+query
       json_url = "/fixture.json"
+    }
           
     $.ajax({
       url: json_url,
