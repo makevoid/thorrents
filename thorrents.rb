@@ -36,7 +36,7 @@ class Thorrents < Sinatra::Base
     thor.search
     
     { results: thor.results }.to_json
-  end
+  end  
 
   get '/css/main.css' do
     sass :main

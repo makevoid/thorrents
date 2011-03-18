@@ -1,4 +1,4 @@
-var template = "<ul><li class='heading'><span>Seeds</span></li>{{#results}}<li><a href='{{magnet}}'><span>{{seeds}}</span>{{name}}</a></li>{{/results}}</ul>"
+
 
 $(function(){
   $("#search form").bind('submit', function(e){
@@ -14,6 +14,8 @@ $(function(){
       url: json_url,
       dataType: 'json',
       success: function(data){      
+        var template = $("#result_tmpl").html()
+        
         var html = Mustache.to_html(template, data)
         $("#results").html(html)
       }
