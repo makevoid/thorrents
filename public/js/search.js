@@ -2,7 +2,8 @@
 
 $(function(){
   $("#search form").bind('submit', function(e){
-    var url = $(this).attr("action")
+    //var url = $(this).attr("action")
+    var url = "/search"  
     var query = $(this).children("input[name=q]").first().val()
     var json_url = url+"/"+query
     if (rack_env == "development") {
