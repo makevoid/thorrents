@@ -29,10 +29,10 @@ class Thorrents < Sinatra::Base
     haml :index
   end
 
-  get '/search/:query' do 
+  get '/search/*' do |query| 
     content_type :json
     
-    thor = Thorz.new params[:query]
+    thor = Thorz.new query
     thor.search
     
     { results: thor.results }.to_json
