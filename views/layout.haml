@@ -22,7 +22,7 @@
         = yield
       %footer
     %script{ src: "/js/jquery.js", type: "text/javascript" }
-    %script{ src: "/js/jquery-templates.js", type: "text/javascript" }
+    %script{ src: "/js/moustache.js", type: "text/javascript" }
     %script{ src: "/js/main.js", type: "text/javascript" }
     %script{ type: "text/javascript" }
       var rack_env = "#{ENV["RACK_ENV"]}"
@@ -31,7 +31,7 @@
       $(function(){
       = yield_content :jquery
       });
-    %script#result_tmpl{ type: "text/x-jquery-tmpl" }
+    %script#result_tmpl{ type: "text/x-moustache-tmpl" }
       :plain
         <ul>                                                                     
           <li class='heading'><span>Seeds</span></li>                          
