@@ -1,5 +1,3 @@
-
-
 $(function(){
   $("#search form").bind('submit', function(e){
     //var url = $(this).attr("action")
@@ -9,6 +7,7 @@ $(function(){
     if (rack_env == "development") {
       json_url = "http://thorrents.makevoid.com/search/"+query
       json_url = "/fixture.json"
+      json_url = "/fixture_no_results.json"
     }
           
     $.ajax({

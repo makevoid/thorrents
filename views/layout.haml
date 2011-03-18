@@ -33,10 +33,10 @@
       });
     %script#result_tmpl{ type: "text/x-moustache-tmpl" }
       :plain
-        <ul>                                                                     
-          <li class='heading'><span>Seeds</span></li>                          
+        <ul>  
+          <li class='heading'><span>Seeds</span></li>
           {{#results}}                                                           
             <li><a href='{{magnet}}'><span>{{seeds}}</span>{{name}}</a></li>   
           {{/results}}                                                           
-          {{^results}}<li>No thorrents for Thor today</li>{{/results}}           
+          {{^results}}<li class='no_results'>No thorrents found. Thor is angry!</li>{{/results}}           
         </ul>
