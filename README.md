@@ -9,7 +9,6 @@ The tHorrents are coming from tpb, that is still blocked in some countries like 
 
 ### JSON API Documentation
 
-
 [thorrents.com/docs](http://thorrents.makevoid.com/docs) 
 
 ### Features
