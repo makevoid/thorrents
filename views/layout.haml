@@ -17,6 +17,9 @@
         %h1 
           Thorrents
           %span Take the torrent power back! Smash old fashioned HTTP downloaders! Thor agrees!
+          %span.mini 
+            aka:  
+            - link_to "TPB social JSON API", "/docs"
       %nav
       #content
         = yield
@@ -40,3 +43,21 @@
           {{/results}}                                                           
           {{^results}}<li class='no_results'>No thorrents found. Thor is angry!</li>{{/results}}           
         </ul>
+    
+
+    %script{ type: "text/javascript" }
+      :plain
+        $(function(){
+          var query = "ubuntu" 
+          
+          var domain = "thorrents.makevoid.com"
+          var url = 'http://'+domain+'/search/'+query+'?callback=show_results'
+          $.getJSON(url, function(data) {
+            console.log(data)
+          })
+          
+          function show_results(data) {
+            console.log(data)
+          }
+
+        })

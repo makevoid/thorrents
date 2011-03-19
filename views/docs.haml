@@ -1,0 +1,32 @@
+%h2 Docs
+
+%a.fork_badge{ href: "http://github.com/makevoid"}
+  %img{ src: "https://d3nwyuy0nl342s.cloudfront.net/img/7afbc8b248c68eb468279e8c17986ad46549fb71/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67", alt: "Fork me on GitHub" }
+
+%p Thorrents is an open source project made for fun and use, you can install it on your machine/server, you can look at the code, you can easily get a copy of (download it or fork it) and improve it! 
+%p Or... if you are interested in using the api you can look at these example(s).
+
+%p the api is simple:
+
+%p.code GET http://thorrents.makevoid.com/search/SOMESTUFF
+
+%p note: your search term has to be URL encoded
+
+
+
+%p example call with curl:
+
+%p.code
+  curl http://thorrents.makevoid.com/search/ubuntu
+
+%p results returned in JSON format:
+
+.gist
+  %script{ src: "https://gist.github.com/877489.js" }
+  
+  
+  
+%p Embed this code in your page to show torrents results of something (requires jQuery):
+
+.gist
+  %script{ src: "https://gist.github.com/877489.js" }

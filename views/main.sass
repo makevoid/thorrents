@@ -237,3 +237,34 @@ input[type='search'], input.search
       background: $bg
       border: 0
       cursor: auto
+
+// docs related
+      
+.fork_badge
+  position: absolute
+  top: 0 
+  right: 0
+  border: 0
+
+span.mini
+  font-size: 0.4em
+  font-weight: normal
+  
+p.code 
+  margin: 10px 0 
+  padding: 8px 18px
+  background: $bg + #111
+  +border-radius(15px)
+  border: 1px solid $bg - #555
+  font-size: 1.1em
+
+.gist
+  margin: 10px 0
+.gist .gist .gist-file 
+  .gist-data  
+    +border-radius(15px)
+    border: 1px solid $bg - #555
+    background: $bg + #111
+    padding: 8px 8px
+  .gist-meta
+    display: none

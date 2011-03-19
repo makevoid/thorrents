@@ -7,6 +7,18 @@ enable :sessions
 path = File.expand_path "../", __FILE__
 APP_PATH = path
 
+class NilClass
+  def blank?
+    self.nil?
+  end
+end
+
+class String
+  def blank?
+    self.nil? || self == ""
+  end
+end
+
 
 require "#{APP_PATH}/models/thorz"
 
@@ -29,6 +41,10 @@ class Thorrents < Sinatra::Base
     haml :index
   end
 
+  get "/docs" do
+    haml :docs
+  end
+
   get '/search/*' do |query|
     content_type :json
     results = []
@@ -37,9 +53,14 @@ class Thorrents < Sinatra::Base
       thor = Thorz.new query
       thor.search
       results = thor.results
-    end
+    end if ENV['RACK_ENV'] == "production"
     
-    { results: results }.to_json
+    callback = request.params["callback"]
+    if callback.blank?
+      { results: results }.to_json
+    else
+      "#{callback}("+ { results: results }.to_json + ')'
+    end
   end  
 
   get '/css/main.css' do
