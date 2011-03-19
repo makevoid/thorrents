@@ -15,11 +15,10 @@
     #container
       %header
         %h1 
-          Thorrents
+          - link_to "Thorrents", "/"
           %span Take the torrent power back! Smash old fashioned HTTP downloaders! Thor agrees!
           %span.mini 
-            aka:  
-            - link_to "TPB social JSON API", "/docs"
+            - link_to "aka: TPB social JSON API", "/docs"
       %nav
       #content
         = yield
