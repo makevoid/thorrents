@@ -9,7 +9,7 @@ The tHorrents are coming from tpb, that is still blocked in some countries like 
 
 ### JSON API Documentation
 
-[thorrents.com/docs](http://thorrents.makevoid.com/docs) 
+[thorrents.com/docs](http://thorrents.com/docs) 
 
 ### Features
 
@@ -21,4 +21,4 @@ The tHorrents are coming from tpb, that is still blocked in some countries like 
 ### Credits
 
 - Francesco 'makevoid' Canessa - [makevoid.com](http://makevoid.com) 
-- Jacopo Santoni - [jacoposantoni.com](http://jacoposantoni.com)
+- Jacopo Santoni - [jacoposantoni.com](http://jacoposantoni.com) for the concept
