@@ -1,15 +1,6 @@
 - content_for :head do
   %script{ src: "/js/search.js", type: "text/javascript" }
-- content_for :jquery do
-  :plain
-    $("#results li").live("click", function(evt){
-      var url = $(this).children("a").attr("href") 
-      if (url)
-        document.location = url
-        
-      evt.preventDefault()
-    })
-
+  = haml :"_fb_events"
 
 #search
   #spinner
@@ -19,8 +10,14 @@
     %input{ type: "submit", value: "search", class: "submit"}
 
 
-%ul#results
-  %li 
+#results
+  %ul
+    %li 
+      /
+        .res
+          link_to "<span>123</span>test"
+
+      
 .clear
 
 /

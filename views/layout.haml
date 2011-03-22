@@ -14,11 +14,15 @@
   %body
     #container
       %header
+        .mini.right
+          %p Thorrents is a TPB social JSON API
+          - link_to "Recommended Clients", "/recommended_clients"
+          \-
+          - link_to "View Docs", "/docs"
         %h1 
           - link_to "Thorrents", "/"
-          %span Take the torrent power back! Smash old fashioned HTTP downloaders! Thor agrees!
-          %span.mini 
-            - link_to "aka: TPB social JSON API", "/docs"
+          %span Smash old fashioned HTTP downloaders! Thor agrees!
+          
       %nav
       #content
         = yield
@@ -28,6 +32,7 @@
     %script{ src: "/js/main.js", type: "text/javascript" }
     %script{ type: "text/javascript" }
       var rack_env = "#{ENV["RACK_ENV"]}"
+      var FB_APP_ID = "#{FB_APP_ID}"
     = yield_content :head
     %script{ type: "text/javascript" }
       $(function(){
@@ -38,9 +43,11 @@
         <ul>  
           <li class='heading'><span>Seeds</span></li>
           {{#results}}                                                           
-            <li><a href='{{magnet}}'><span>{{seeds}}</span>{{name}}</a></li>   
+            <li>
+              <div class='res'><a href='{{magnet}}'><span>{{seeds}}</span>{{name}}</a></div>
+            </li>   
           {{/results}}                                                           
-          {{^results}}<li class='no_results'>No thorrents found. Thor is angry!</li>{{/results}}           
+          {{^results}}<li><div class='no_results'>No thorrents found. Thor is angry!</div></li>{{/results}}           
         </ul>
     
 

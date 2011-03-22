@@ -19,6 +19,7 @@ class String
   end
 end
 
+FB_APP_ID = "192114967494018"
 
 require "#{APP_PATH}/models/thorz"
 
@@ -43,6 +44,10 @@ class Thorrents < Sinatra::Base
 
   get "/docs" do
     haml :docs
+  end
+  
+  get "/recommended_clients" do
+    haml :recommended_clients
   end
 
   get '/search/*' do |query|
