@@ -8,7 +8,7 @@ $(function(){
     //var url = $(this).attr("action")
     var url = "/search"  
     var query = $(this).children("input[name=q]").first().val()
-    var json_url = url+"/"+query
+    var json_url = url+"/"+query+".json"
     if (rack_env == "development") {
       json_url = "http://thorrents.makevoid.com/search/"+query
       json_url = "/fixture_no_results.json"
