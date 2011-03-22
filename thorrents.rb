@@ -63,7 +63,7 @@ class Thorrents < Sinatra::Base
   end
 
   get '/search/:query.json' do 
-    load_results
+    results = load_results
 
     content_type :json
     callback = request.params["callback"]
