@@ -49,23 +49,36 @@ class Thorrents < Sinatra::Base
   get "/recommended_clients" do
     haml :recommended_clients
   end
-
-  get '/search/*' do |query|
-    content_type :json
+  
+  def load_results    
+    query = params[:query]
+    
     results = []
-
     unless query==""
       thor = Thorz.new query
       thor.search
       results = thor.results
     end if ENV['RACK_ENV'] == "production"
-    
+    results
+  end
+
+  get '/search/:query.json' do 
+    load_results
+
+    content_type :json
     callback = request.params["callback"]
     if callback.blank?
       { results: results }.to_json
     else
       "#{callback}("+ { results: results }.to_json + ')'
     end
+  end  
+  
+  get '/search*' do |query|
+    @query = params[:query] = query.gsub(/^\//, '')
+    @results = load_results
+
+    haml :result    
   end  
 
   get '/css/main.css' do

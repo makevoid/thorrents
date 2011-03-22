@@ -1,0 +1,10 @@
+- content_for :head do
+  %script{ src: "/js/search.js", type: "text/javascript" }
+  = haml :"_fb_events"
+
+#search
+  #spinner
+    - image_tag "/imgs/spinner.gif"
+  %form{ method: "get" }
+    %input{ name: "q", type: "search", value: @query }
+    %input{ type: "submit", value: "search", class: "submit"}
