@@ -37,6 +37,13 @@ class Thorrents < Sinatra::Base
   def not_found(object=nil)
     halt 404, "404 - Page Not Found"
   end
+  
+  helpers do
+    def search_title
+      " search: #{CGI.escape $1}" if request.path =~ /^\/search\/(.+)/
+    end
+  end
+  
 
   get "/" do
     haml :index
