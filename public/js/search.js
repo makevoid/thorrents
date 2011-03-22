@@ -75,6 +75,9 @@ $(function(){
     if (state.action.search) {
       $("#search form input[name=q]").val(state.action.search)
       do_search("noPush")
+    } else {
+      $("#results").html("")
+      alreadyPushedHome = true
     }
   }
   
