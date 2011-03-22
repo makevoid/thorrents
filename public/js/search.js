@@ -4,7 +4,6 @@ $(function(){
   var template = $("#result_tmpl").html()
   
   $("#search form").bind('submit', function(e){
-    $("#spinner").show("fast")
     //var url = $(this).attr("action")
     var url = "/search"  
     var query = $(this).children("input[name=q]").first().val()
@@ -15,16 +14,19 @@ $(function(){
       json_url = "/fixture.json"
     }
           
-    $.ajax({
-      url: json_url,
-      dataType: 'json',
-      success: function(data){      
-        $("#spinner").hide("fast")
+    if (query != "") {
+      $("#spinner").show("fast")
+      $.ajax({
+        url: json_url,
+        dataType: 'json',
+        success: function(data){      
+          $("#spinner").hide("fast")
         
-        var html = Mustache.to_html(template, data)
-        $("#results").html(html)
-      }
-    })
+          var html = Mustache.to_html(template, data)
+          $("#results").html(html)
+        }
+      })
+    }
       
     e.preventDefault()
   })
