@@ -10,11 +10,15 @@
       evt.preventDefault()
     })
 
+
 #search
+  #spinner
+    - image_tag "/imgs/spinner.gif"
   %form{ method: "get" }
     %input{ name: "q", type: "search" }
     %input{ type: "submit", value: "search", class: "submit"}
-    
+
+
 %ul#results
   %li 
 .clear
