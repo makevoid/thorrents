@@ -2,14 +2,14 @@
 
 ## Take the torrent power back! Smash old fashioned HTTP downloaders! Thor agrees!
 
-temporary domain:
-[thorrents.com](http://thorrents.makevoid.com)
+domain:
+[thorrents.com](http://thorrents.com)
 
 The tHorrents are coming from tpb, that is still blocked in some countries like Italy, that's why this project makes some sense somewhere.
 
 ### JSON API Documentation
 
-[thorrents.com/docs](http://thorrents.makevoid.com/docs) 
+[thorrents.com/docs](http://thorrents.com/docs) 
 
 ### Features
 
@@ -21,4 +21,4 @@ The tHorrents are coming from tpb, that is still blocked in some countries like 
 ### Credits
 
 - Francesco 'makevoid' Canessa - [makevoid.com](http://makevoid.com) 
-- Jacopo Santoni - [jacoposantoni.com](http://jacoposantoni.com)
+- Jacopo Santoni - [jacoposantoni.com](http://jacoposantoni.com) for the concept
