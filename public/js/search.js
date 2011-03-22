@@ -77,6 +77,7 @@ $(function(){
       do_search("noPush")
     } else {
       $("#results").html("")
+      $("#search form input[name=q]").val("")
       alreadyPushedHome = true
     }
   }
