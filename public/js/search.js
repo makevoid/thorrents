@@ -40,8 +40,7 @@ $(function(){
   $("#results li").live("click", function(evt){
     var url = $(this).children("a").attr("href") 
     if (url)
-      //document.location = url
-      "Dragon Age 2-RELOADED"
+      document.location = url
 
     $(this).children(".fb_share").remove()      
     var fb_like = "<fb:like href='http://thorrents.com' layout='button_count' show_faces='false' width='100' font='lucida grande'></fb:like>"
