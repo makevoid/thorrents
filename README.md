@@ -2,8 +2,8 @@
 
 ## Take the torrent power back! Smash old fashioned HTTP downloaders! Thor agrees!
 
-temporary domain:
-[thorrents.com](http://thorrents.makevoid.com)
+domain:
+[thorrents.com](http://thorrents.com)
 
 The tHorrents are coming from tpb, that is still blocked in some countries like Italy, that's why this project makes some sense somewhere.
 
