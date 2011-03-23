@@ -50,6 +50,11 @@ end
 
 class String
   def titleize
+    # self.split("_").map{ |w| w.capitalize }.join(" ").capitalize
+    self.split("_").join(" ").capitalize
+  end
+  
+  def urlize
     # js: self.replace(/[^a-z]+/gi, " ").trim().replace(/\s/g, "_").toLowerCase()
     self.gsub(/[^a-z]+/i, ' ').strip.gsub(/\s/, "_").downcase
   end
