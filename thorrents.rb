@@ -60,6 +60,16 @@ class String
   end
 end
 
+class NilClass
+  def titleize
+    nil
+  end
+  
+  def urlize
+    nil
+  end
+end
+
 # app
 
 FB_APP_ID = "192114967494018"
