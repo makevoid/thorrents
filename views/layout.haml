@@ -8,6 +8,7 @@
     %meta{ name: "description", content: "" }
     %meta{ name: "keywords", content: "" }    
     %meta{ name: "author", content: "" }    
+    = haml :"_fb_og_meta"
     -# %meta{ name: "viewport", content: "width=device-width, initial-scale=1.0" }
     %script{ src: "/js/modernizr.js", type: "text/javascript" }
 
@@ -34,6 +35,7 @@
     %script{ type: "text/javascript" }
       var rack_env = "#{ENV["RACK_ENV"]}"
       var FB_APP_ID = "#{FB_APP_ID}"
+      var fb_share_url = "#{"http://thorrents.com/search/#{@query}/#{@result}"}"      
     = yield_content :head
     %script{ type: "text/javascript" }
       $(function(){

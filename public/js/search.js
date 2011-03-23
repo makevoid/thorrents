@@ -106,7 +106,7 @@ $(function(){
     var url = $(this).children("a").attr("href") 
 
     $(this).parent().find(".fb_share").remove()      
-    var fb_like = "<fb:like href='http://thorrents.com' layout='button_count' show_faces='false' width='100' font='lucida grande'></fb:like>"
+    var fb_like = "<fb:like href='"+fb_share_url+"' layout='button_count' show_faces='false' width='100' font='lucida grande'></fb:like>"
     $(this).parent().append("<div class='fb_share'>"+fb_like+"</div>")
     FB.init({appId: FB_APP_ID, status: true, cookie: true, xfbml: true});
     

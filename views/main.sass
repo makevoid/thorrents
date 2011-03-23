@@ -234,6 +234,9 @@ input[type='search'], input.search
         text-align: right
         margin-right: 15px
         font-size: 0.9em
+    .res.shared
+      border: 1px solid #3F77BE
+      +simple_gradient($bg+#222, #BAE5FF)
     .res:hover
       +simple_gradient($main - #222, $main + #222)
       border: 1px solid #FFF
@@ -258,6 +261,8 @@ input[type='search'], input.search
     .fb_share
       float: left
       margin: 10px 0 0 10px
+      
+      
 
 iframe
   background: $bg

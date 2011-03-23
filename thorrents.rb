@@ -71,7 +71,11 @@ class Thorrents < Sinatra::Base
   
   helpers do
     def search_title
-      " search: #{CGI.escape $1}" if request.path =~ /^\/search\/(.+)/
+      if request.path =~ /^\/search\/(.+)/
+        " search: #{CGI.escape $1}" 
+      else
+        " - Smash old fashioned HTTP downloaders! Thor agrees!"
+      end
     end
   end
   
@@ -119,7 +123,8 @@ class Thorrents < Sinatra::Base
   end  
   
   get '/search*' do |query|
-    @query = params[:query] = query.gsub(/^\//, '')
+    query = params[:query] = query.gsub(/^\//, '')
+    @query, @result = query.split "/"
     @results = load_results
 
     haml :result    

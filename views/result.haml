@@ -4,7 +4,14 @@
   %ul
     - @results.map do |result|
       %li 
-        .res
-          - link_to "<span>#{result[:seeds]}</span>#{result[:name]}", result[:magnet]
-
-.clear
+        - unless result[:name] == @result
+          .res
+            - link_to "<span>#{result[:seeds]}</span>#{result[:name]}", result[:magnet]
+        - else
+          .res{ class: "#{"shared" if result[:name] == @result}" }
+            - link_to "<span>#{result[:seeds]}</span>#{result[:name]}", result[:magnet]
+          .fb_share
+            - url = "http://thorrents.com/search/#{@query}/#{@result}"
+            :plain
+              <fb:like href='#{url}' layout='button_count' show_faces='false' width='100' font='lucida grande'></fb:like>
+  .clear
