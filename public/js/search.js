@@ -6,8 +6,9 @@ $(function(){
   
   function pushToHome() {
     var title = "Thorrents"
-    var stateObj = { action: {} };
-    history.pushState(stateObj, title, "/");
+    var stateObj = { action: {} }
+    if (history.pushState)
+      history.pushState(stateObj, title, "/")
     $("title").html(title)
     alreadyPushedHome = false
   }
@@ -27,7 +28,8 @@ $(function(){
       if (mod != "noPush") {
         var stateObj = { action: { search: query } };
         var title = "Thorrents search: "+query
-        history.pushState(stateObj, title, "/search/"+query);
+        if (history.pushState)
+          history.pushState(stateObj, title, "/search/"+query);
         $("title").html(title)      
       }
       
@@ -45,18 +47,33 @@ $(function(){
     } else {
       if (mod != "noPush") {
         var title = "Thorrents"
-        var stateObj = { action: {} };
-        history.pushState(stateObj, title, "/");
+        var stateObj = { action: {} }
+        if (history.pushState)
+          history.pushState(stateObj, title, "/")
         $("title").html(title)
       }
     }
   }
 
-  
-  $("#search form").bind('submit', function(e){
+  function prevent_default(event) {
+    event.preventDefault ? event.preventDefault() : event.returnValue = false
+    if(event.preventDefault){ event.preventDefault()}
+       else{event.stop()}
+    
+    event.stopPropagation()
+  }
+
+  $("#search form").live('submit', function(e){
     do_search()
-      
-    e.preventDefault()
+    
+    prevent_default(e)
+    return false
+  })
+  
+  $("#search form input.submit").click(function(e){
+    do_search()
+    prevent_default(e)
+    return false
   })
   
   

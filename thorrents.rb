@@ -7,6 +7,9 @@ enable :sessions
 path = File.expand_path "../", __FILE__
 APP_PATH = path
 
+
+# monkeypatching
+
 class NilClass
   def blank?
     self.nil?
@@ -18,6 +21,34 @@ class String
     self.nil? || self == ""
   end
 end
+
+module KeysSymbolizer
+  def symbolize_keys!
+    self.replace(self.symbolize_keys)
+  end
+  
+  def symbolize_keys
+    inject({}) do |options, (key, value)|
+      options[(key.to_sym rescue key) || key] = value
+      options
+    end
+  end
+  
+  def recursive_symbolize_keys!
+    symbolize_keys!
+    # symbolize each hash in .values
+    values.each{|h| h.recursive_symbolize_keys! if h.is_a?(Hash) }
+    # symbolize each hash inside an array in .values
+    values.select{|v| v.is_a?(Array) }.flatten.each{|h| h.recursive_symbolize_keys! if h.is_a?(Hash) }
+    self
+  end
+end
+
+class Hash
+  include KeysSymbolizer
+end
+
+# app
 
 FB_APP_ID = "192114967494018"
 
@@ -61,12 +92,18 @@ class Thorrents < Sinatra::Base
     query = params[:query]
     
     results = []
+    
     unless query==""
-      thor = Thorz.new query
-      thor.search
-      results = thor.results
-    end if ENV['RACK_ENV'] == "production"
-    results
+      results = if ENV['RACK_ENV'] == "production"
+        thor = Thorz.new query
+        thor.search
+        thor.results
+      else
+        [{name: "antani", magnet: "#link", seeds: "2"}, {name: "sblinda", magnet: "#link", seeds: "1"}]
+      end
+    end 
+    
+    results    
   end
 
   get '/search/:query.json' do 

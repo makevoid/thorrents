@@ -2,10 +2,9 @@
 
 #results
   %ul
-    %li 
-      /
+    - @results.map do |result|
+      %li 
         .res
-          link_to "<span>123</span>test"
+          - link_to "<span>#{result[:seeds]}</span>#{result[:name]}", result[:magnet]
 
-      
 .clear
