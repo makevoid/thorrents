@@ -4,7 +4,7 @@
   %ul
     - @results.map do |result|
       %li 
-        - unless result[:name] == @result
+        - unless result[:name].titleize == @result
           .res
             - link_to "<span>#{result[:seeds]}</span>#{result[:name]}", result[:magnet]
         - else

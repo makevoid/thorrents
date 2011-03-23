@@ -45,7 +45,7 @@ $(function(){
         }
       })
     } else {
-      if (mod != "noPush") {
+      if (mod != "noPush") { // FIXME: home????
         var title = "Thorrents"
         var stateObj = { action: {} }
         if (history.pushState)
@@ -104,11 +104,22 @@ $(function(){
   
   $("#results .res").live("click", function(evt){
     var url = $(this).children("a").attr("href") 
+    result = $(this).children("a").text()
+    result = result.replace(/[^a-z]+/gi, " ").trim().replace(/\s/g, "_").toLowerCase()
+    $(this).addClass("shared")
 
     $(this).parent().find(".fb_share").remove()      
-    var fb_like = "<fb:like href='"+fb_share_url+"' layout='button_count' show_faces='false' width='100' font='lucida grande'></fb:like>"
+    var fb_like = "<fb:like href='"+fb_base_url+"/"+query+"/"+result+"' layout='button_count' show_faces='false' width='100' font='lucida grande'></fb:like>"
     $(this).parent().append("<div class='fb_share'>"+fb_like+"</div>")
     FB.init({appId: FB_APP_ID, status: true, cookie: true, xfbml: true});
+    
+    // adding result to history
+    var query = $("#search form input[name=q]").first().val()
+    var stateObj = { action: { search: query } };
+    var title = "Thorrents search: "+query
+    if (history.pushState)
+      history.pushState(stateObj, title, "/search/"+query+"/"+result);
+    $("title").html(title)
     
     if (url)
       document.location = url

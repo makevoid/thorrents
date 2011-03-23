@@ -48,6 +48,13 @@ class Hash
   include KeysSymbolizer
 end
 
+class String
+  def titleize
+    # js: self.replace(/[^a-z]+/gi, " ").trim().replace(/\s/g, "_").toLowerCase()
+    self.gsub(/[^a-z]+/i, ' ').strip.gsub(/\s/, "_").downcase
+  end
+end
+
 # app
 
 FB_APP_ID = "192114967494018"
@@ -69,9 +76,18 @@ class Thorrents < Sinatra::Base
     halt 404, "404 - Page Not Found"
   end
   
-  helpers do
+  
+  helpers do    
+    def in_search
+      /^\/search\/(.+)/
+    end
+    
+    def meta_description
+      request.path =~ in_search ? "Download thorrent with magnet link!" : "Thorrents is a search engine for magnet links that uses TPB as a source! Now you can share your favourite magnet links via Facebook!"
+    end
+    
     def search_title
-      if request.path =~ /^\/search\/(.+)/
+      if request.path =~ in_search
         " search: #{CGI.escape $1}" 
       else
         " - Smash old fashioned HTTP downloaders! Thor agrees!"
