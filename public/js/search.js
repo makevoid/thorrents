@@ -1,3 +1,7 @@
+String.prototype.titleize = function() {
+  return this.charAt(0).toUpperCase() + this.slice(1);
+}
+
 $(function(){
   // search
   
@@ -106,8 +110,10 @@ $(function(){
     var url = $(this).children("a").attr("href") 
     result = $(this).children("a").text()
     result = result.replace(/[^a-z]+/gi, " ").trim().replace(/\s/g, "_").toLowerCase()
+    $(".res").removeClass("shared")
     $(this).addClass("shared")
-
+    
+    $(".fb_share").remove()
     $(this).parent().find(".fb_share").remove()      
     var fb_like = "<fb:like href='"+fb_base_url+"/"+query+"/"+result+"' layout='button_count' show_faces='false' width='100' font='lucida grande'></fb:like>"
     $(this).parent().append("<div class='fb_share'>"+fb_like+"</div>")
@@ -120,6 +126,11 @@ $(function(){
     if (history.pushState)
       history.pushState(stateObj, title, "/search/"+query+"/"+result);
     $("title").html(title)
+    
+    // meta tags
+    result_title = result.replace(/_/g, " ").titleize()
+    $("meta[property=og:title]").attr("content", "I downloaded '"+result_title+"' with Thorrents")
+    $("meta[property=og:url]").attr("content", fb_base_url+"/"+query+"/"+result)
     
     if (url)
       document.location = url
