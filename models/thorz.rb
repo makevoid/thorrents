@@ -14,18 +14,9 @@ class Thorz
   
   def search
     url = URI.parse URL % @query
-    #res = Net::HTTP.get_response(url)
-    res = Net::HTTP.new(url.host, url.port).start do |http| 
-      http.read_timeout = 5 
-      http.request(req) 
-    end 
-    case res 
-      when Net::HTTPSuccess 
-        # success 
-      else 
-        # something went wront 
-    end 
-    
+    timeout(4) do 
+      res = Net::HTTP.get_response(url)
+    end
     #puts res.body
 
     doc = Nokogiri::HTML(res.body)
