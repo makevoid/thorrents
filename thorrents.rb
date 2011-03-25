@@ -134,7 +134,9 @@ class Thorrents < Sinatra::Base
         thor.search
         thor.results
       else
-        [{name: "antani", magnet: "#link", seeds: "2"}, {name: "sblinda", magnet: "#link", seeds: "1"}]
+        thor = Thorz.new query
+        thor.proxied_search
+        thor.results
       end
     end 
     

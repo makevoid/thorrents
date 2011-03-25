@@ -4,7 +4,7 @@
     FB.init({appId: '#{FB_APP_ID}', status: true, cookie: true, xfbml: true});
            
     FB.Event.subscribe('edge.create', function(href, widget) {
-      console.log("voted: "+href)
+      //console.log("voted: "+href)
     });
     FB.Canvas.setAutoResize(150);
   };

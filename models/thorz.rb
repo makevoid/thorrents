@@ -12,11 +12,24 @@ class Thorz
     @results = []
   end
   
+  def proxied_search 
+    url = URI.parse "http://thorrents.com/search/#{@query}.json"
+    res = nil
+    timeout(4) do 
+      res = Net::HTTP.get_response url
+    end
+    if res  
+      JSON.parse(res.body)["results"].each do |rs|
+        @results << {name: rs["name"], magnet: rs["magnet"], seeds: rs["seeds"]}
+      end
+    end
+  end
+  
   def search
     url = URI.parse URL % @query
     res = nil
     timeout(4) do 
-      res = Net::HTTP.get_response(url)
+      res = Net::HTTP.get_response url
     end
     #puts res.body
     
