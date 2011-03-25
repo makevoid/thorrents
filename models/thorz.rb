@@ -13,6 +13,7 @@ class Thorz
   end
   
   def proxied_search 
+    return false if @query.blank?
     url = URI.parse "http://thorrents.com/search/#{@query}.json"
     res = nil
     timeout(4) do 

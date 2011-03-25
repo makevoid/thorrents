@@ -124,17 +124,15 @@ class Thorrents < Sinatra::Base
   end
   
   def load_results    
-    query = params[:query]
-    
     results = []
     
-    unless query==""
+    unless @query.blank?
       results = if ENV['RACK_ENV'] == "production"
-        thor = Thorz.new query
+        thor = Thorz.new @query
         thor.search
         thor.results
       else
-        thor = Thorz.new query
+        thor = Thorz.new @query
         thor.proxied_search
         thor.results
       end

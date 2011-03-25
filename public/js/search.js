@@ -22,7 +22,12 @@ $(function(){
     var url = "/search"  
     var query = $("#search form input[name=q]").first().val()
     var json_url = url+"/"+query+".json"
-     
+    if (rack_env == "development") {
+      json_url = "http://thorrents.makevoid.com/search/"+query
+      json_url = "/fixture_no_results.json"
+      json_url = "/fixture.json"
+    }
+                
     if (query != "") {
       if (mod != "noPush") {
         var stateObj = { action: { search: query } };
