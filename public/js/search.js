@@ -110,7 +110,7 @@ $(function(){
     var query = $("#search form input[name=q]").first().val()
     var url = $(this).children("a").attr("href") 
     result = $(this).children("a").text()
-    result = result.replace(/[^a-z]+/gi, " ").trim().replace(/\s/g, "_").toLowerCase()
+    result = result.replace(/[^a-z1-9]+/gi, " ").trim().replace(/\s/g, "_").toLowerCase()
     $(".res").removeClass("shared")
     $(this).addClass("shared")
     
