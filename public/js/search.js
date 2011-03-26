@@ -47,6 +47,8 @@ $(function(){
         
           var html = Mustache.to_html(template, data)
           $("#results").html(html)
+          if (data.results == [])
+            $("#thor_bg").fadeOut("slow")
         }
       })
     } else {
