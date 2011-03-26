@@ -134,7 +134,6 @@ class Thorrents < Sinatra::Base
       else
         thor = Thorz.new @query
         thor.proxied_search
-        thor.results
       end
     end 
     
@@ -142,6 +141,7 @@ class Thorrents < Sinatra::Base
   end
 
   get '/search/:query.json' do 
+    @query = params[:query]
     results = load_results
 
     content_type :json
@@ -154,7 +154,7 @@ class Thorrents < Sinatra::Base
   end  
   
   get '/search*' do |query|
-    query = params[:query] = query.gsub(/^\//, '')
+    query = query.gsub(/^\//, '')
     @query, @result = query.split "/"
     @results = load_results
 
