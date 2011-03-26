@@ -16,7 +16,7 @@ class Thorz
     return false if @query.blank?
     url = URI.parse "http://thorrents.com/search/#{@query}.json"
     res = nil
-    timeout(4) do 
+    timeout(10) do 
       res = Net::HTTP.get_response url
     end
     if res  
@@ -30,7 +30,7 @@ class Thorz
     url = URI.parse URL % @query
     res, reason, errror = nil
     begin
-      timeout(4) do 
+      timeout(10) do 
         res = Net::HTTP.get_response url
       end
     rescue Timeout::Error => e
