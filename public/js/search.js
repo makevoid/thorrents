@@ -43,12 +43,14 @@ $(function(){
         dataType: 'json',
         success: function(data){                
           $("#spinner").hide("fast")
+          $("#thor_bg").fadeIn("slow")
         
           var html = Mustache.to_html(template, data)
           $("#results").html(html)
         }
       })
     } else {
+      $("#thor_bg").fadeOut("slow")
       if (mod != "noPush") { // FIXME: home????
         var title = "Thorrents"
         var stateObj = { action: {} }
