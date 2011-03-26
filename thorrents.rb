@@ -70,9 +70,12 @@ class NilClass
   end
 end
 
+
 # app
 
 FB_APP_ID = "192114967494018"
+
+require 'mixpanel'
 
 require "#{APP_PATH}/models/thorz"
 
@@ -89,6 +92,18 @@ class Thorrents < Sinatra::Base
 
   def not_found(object=nil)
     halt 404, "404 - Page Not Found"
+  end
+  
+  
+  # mixpanel
+
+  def initialize_mixpanel
+    @mixpanel = Mixpanel.new(MIXPANEL_TOKEN, request.env, true)
+  end
+
+  def track(event, properties={})
+    initialize_mixpanel if @mixpanel.nil?
+    @mixpanel.track_event event, properties unless ENV["RACK_ENV"] == "development"
   end
   
   
@@ -112,10 +127,12 @@ class Thorrents < Sinatra::Base
   
 
   get "/" do
+    track :page, name: "index"
     haml :index
   end
 
   get "/docs" do
+    track :page, name: "docs"
     haml :docs
   end
   
@@ -146,7 +163,8 @@ class Thorrents < Sinatra::Base
 
     content_type :json
     callback = request.params["callback"]
-    if callback.blank?
+    if callback.blank?      
+      track :query, name: @query, type: "json"
       { results: results }.to_json
     else
       "#{callback}("+ { results: results }.to_json + ')'
@@ -157,7 +175,8 @@ class Thorrents < Sinatra::Base
     query = query.gsub(/^\//, '')
     @query, @result = query.split "/"
     @results = load_results
-
+    
+    track :query, name: @query, type: "html"
     haml :result    
   end  
 

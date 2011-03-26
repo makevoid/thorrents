@@ -11,3 +11,5 @@ gem 'rack-flash'
 gem 'voidtools'
 
 gem "nokogiri"
+
+gem "mixpanel"

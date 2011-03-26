@@ -28,9 +28,13 @@ class Thorz
   
   def search
     url = URI.parse URL % @query
-    res = nil
-    timeout(4) do 
-      res = Net::HTTP.get_response url
+    res, reason, errror = nil
+    begin
+      timeout(4) do 
+        res = Net::HTTP.get_response url
+      end
+    rescue Timeout::Error => e
+      reason = "Timeout", error = e
     end
     #puts res.body
     

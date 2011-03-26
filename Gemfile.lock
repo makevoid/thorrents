@@ -1,7 +1,13 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    escape (0.0.4)
     haml (3.0.25)
+    json (1.5.1)
+    mixpanel (0.8.1)
+      escape
+      json
+      rack
     nokogiri (1.4.4)
     rack (1.2.2)
     rack-flash (0.1.1)
@@ -19,6 +25,7 @@ PLATFORMS
 
 DEPENDENCIES
   haml
+  mixpanel
   nokogiri
   rack-flash
   sinatra
