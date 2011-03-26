@@ -135,7 +135,7 @@ $(function(){
     
     // meta tags
     result_title = result.replace(/_/g, " ").titleize()
-    $("meta[property=og:title]").attr("content", "I downloaded '"+result_title+"' with Thorrents")
+    $("meta[property=og:title]").attr("content", result_title+": downloaded with Thorrents")
     $("meta[property=og:url]").attr("content", fb_base_url+"/"+query+"/"+result)
     
     if (url)
