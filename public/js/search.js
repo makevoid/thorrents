@@ -87,7 +87,8 @@ $(function(){
   
   $("#search form input[name=q]").keyup(function(){
     if ($(this).val() == "") {
-      $("#results").html("")
+      $("#results").html("")      
+      $("#thor_bg").fadeOut("slow")
       if (!alreadyPushedHome) {
         pushToHome()
         alreadyPushedHome = true
@@ -114,7 +115,6 @@ $(function(){
     var query = $("#search form input[name=q]").first().val()
     var url = $(this).children("a").attr("href") 
     result = $(this).find("span.name").text()
-    console.log(result)
     result = result.replace(/[^a-z0-9]+/gi, " ").trim().replace(/\s/g, "_").toLowerCase()
     $(".res").removeClass("shared")
     $(this).addClass("shared")
