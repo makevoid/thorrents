@@ -55,8 +55,8 @@ class String
   end
   
   def urlize
-    # js: self.replace(/[^a-z1-9]+/gi, " ").trim().replace(/\s/g, "_").toLowerCase()
-    self.gsub(/[^a-z1-9]+/i, ' ').strip.gsub(/\s/, "_").downcase
+    # js: self.replace(/[^a-z0-9]+/gi, " ").trim().replace(/\s/g, "_").toLowerCase()
+    self.gsub(/[^a-z0-9]+/i, ' ').strip.gsub(/\s/, "_").downcase
   end
 end
 

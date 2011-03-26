@@ -115,7 +115,7 @@ $(function(){
     var url = $(this).children("a").attr("href") 
     result = $(this).find("span.name").text()
     console.log(result)
-    result = result.replace(/[^a-z1-9]+/gi, " ").trim().replace(/\s/g, "_").toLowerCase()
+    result = result.replace(/[^a-z0-9]+/gi, " ").trim().replace(/\s/g, "_").toLowerCase()
     $(".res").removeClass("shared")
     $(this).addClass("shared")
     
