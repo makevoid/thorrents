@@ -151,6 +151,7 @@ class Thorrents < Sinatra::Base
       else
         thor = Thorz.new @query
         thor.proxied_search
+        thor.results
       end
     end 
     
