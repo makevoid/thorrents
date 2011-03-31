@@ -20,7 +20,7 @@
       var pageTracker = _gat._getTracker("UA-10682634-9");
       pageTracker._trackPageview();
       } catch(err) {}
-  %body
+  %body{ class: request.path.split("/")[1]}
     #container
       %header
         .mini.right

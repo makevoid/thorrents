@@ -1,6 +1,6 @@
 # Thorrents
 
-## Take the torrent power back! Smash old fashioned HTTP downloaders! Thor agrees!
+## Take the torrent power back! Smash HTTP downloads! Thor agrees!
 
 domain:
 [thorrents.com](http://thorrents.com)
