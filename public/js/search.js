@@ -124,7 +124,7 @@ $(function(){
     
     $(".fb_share").remove()
     $(this).parent().find(".fb_share").remove()      
-    var fb_like = "<fb:like href='"+fb_base_url+"/"+query+"/"+result+"' layout='button_count' show_faces='false' send='true' width='100' font='lucida grande'></fb:like>"
+    var fb_like = "<fb:like href='"+fb_base_url+"/"+query+"/"+result+"' layout='button_count' show_faces='false' send='true' width='300' font='lucida grande'></fb:like>"
     $(this).parent().append("<div class='fb_share'>"+fb_like+"</div>")
     FB.init({appId: FB_APP_ID, status: true, cookie: true, xfbml: true});
     
