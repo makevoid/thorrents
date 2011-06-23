@@ -197,7 +197,7 @@ class Thorrents < Sinatra::Base
     @results = load_results
     
     if request.user_agent =~ /facebook/ || params[:fb]
-      url = "https://ajax.googleapis.com/ajax/services/search/images?v=1.0&rsz=1&imgsz=medium&q=#{@query}"
+      url = "https://ajax.googleapis.com/ajax/services/search/images?v=1.0&rsz=1&imgsz=medium&q=#{@query.gsub(/\s/, "%20")}"
       response = https(url)
       json = JSON.parse(response.body)
       @fb_image = json["responseData"]["results"].first["url"]
