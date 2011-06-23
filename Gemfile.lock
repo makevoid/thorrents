@@ -1,6 +1,7 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    backports (2.3.0)
     escape (0.0.4)
     google-search (1.0.2)
       json
@@ -10,6 +11,8 @@ GEM
       escape
       json
       rack
+    monkey-lib (0.5.4)
+      backports
     nokogiri (1.4.4)
     rack (1.2.2)
     rack-flash (0.1.1)
@@ -17,8 +20,18 @@ GEM
     sinatra (1.2.1)
       rack (~> 1.1)
       tilt (>= 1.2.2, < 2.0)
+    sinatra-advanced-routes (0.5.1)
+      monkey-lib (~> 0.5.0)
+      sinatra (~> 1.0)
+      sinatra-sugar (~> 0.5.0)
     sinatra-content-for (0.2)
       sinatra
+    sinatra-reloader (0.5.0)
+      sinatra (~> 1.0)
+      sinatra-advanced-routes (~> 0.5.0)
+    sinatra-sugar (0.5.1)
+      monkey-lib (~> 0.5.0)
+      sinatra (~> 1.0)
     tilt (1.2.2)
     voidtools (0.2.2)
 
@@ -33,4 +46,5 @@ DEPENDENCIES
   rack-flash
   sinatra
   sinatra-content-for
+  sinatra-reloader
   voidtools
