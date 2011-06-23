@@ -2,6 +2,8 @@ GEM
   remote: http://rubygems.org/
   specs:
     escape (0.0.4)
+    google-search (1.0.2)
+      json
     haml (3.0.25)
     json (1.5.1)
     mixpanel (0.8.1)
@@ -24,6 +26,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  google-search
   haml
   mixpanel
   nokogiri

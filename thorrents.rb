@@ -1,8 +1,9 @@
 require 'haml'
 require 'sass'
-require 'sinatra'
+require 'sinatra/base'
+require "sinatra/reloader"
 require 'json'
-enable :sessions
+require 'net/https'
 
 path = File.expand_path "../", __FILE__
 APP_PATH = path
@@ -82,6 +83,13 @@ require "#{APP_PATH}/models/thorz"
 class Thorrents < Sinatra::Base
   require "#{APP_PATH}/config/env"
   
+  configure :development do
+    register Sinatra::Reloader
+    also_reload %w(controllers models config lib).map{|f| "#{f}/*.rb" }
+    set :public, "public"
+    set :static, true
+  end
+  
   set :haml, { :format => :html5 }
   require 'rack-flash'
   enable :sessions
@@ -157,7 +165,17 @@ class Thorrents < Sinatra::Base
     
     results    
   end
-
+  
+  def https(url)
+    uri = URI.parse url 
+    http = Net::HTTP.new uri.host, uri.port 
+    http.use_ssl = true
+    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+    request = Net::HTTP::Get.new uri.request_uri 
+    response = http.request request 
+  end
+  
+  
   get '/search/:query.json' do 
     @query = params[:query]
     results = load_results
@@ -176,6 +194,13 @@ class Thorrents < Sinatra::Base
     query = query.gsub(/^\//, '')
     @query, @result = query.split "/"
     @results = load_results
+    
+    if request.user_agent =~ /facebook/ || params[:fb]
+      url = "https://ajax.googleapis.com/ajax/services/search/images?v=1.0&rsz=1&imgsz=medium&q=#{@query}"
+      response = https(url)
+      json = JSON.parse(response.body)
+      @fb_image = json["responseData"]["results"].first["url"]
+    end
     
     track :query, name: @query, type: "html"
     haml :result    

@@ -13,3 +13,5 @@ gem 'voidtools'
 gem "nokogiri"
 
 gem "mixpanel"
+
+gem "google-search"

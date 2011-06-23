@@ -1,6 +1,3 @@
-set :haml, { :format => :html5 }
-
-
 # require 'dm-core'
 # require 'dm-sqlite-adapter'
 # 
