@@ -83,13 +83,13 @@ require "#{APP_PATH}/models/thorz"
 class Thorrents < Sinatra::Base
   require "#{APP_PATH}/config/env"
   
-  configure :development do
-    puts "You are running in development env!"
-    register Sinatra::Reloader
-    also_reload %w(controllers models config lib).map{|f| "#{f}/*.rb" }
-    set :public, "public"
-    set :static, true
-  end
+  # puts "You are running in development env!"
+  # configure :development do
+  #   register Sinatra::Reloader
+  #   also_reload %w(controllers models config lib).map{|f| "#{f}/*.rb" }
+  #   set :public, "public"
+  #   set :static, true
+  # end
   
   set :haml, { :format => :html5 }
   require 'rack-flash'
