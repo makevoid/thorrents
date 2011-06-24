@@ -135,7 +135,6 @@ class Thorrents < Sinatra::Base
   
 
   get "/" do
-    puts ENV["RACK_ENV"]
     track :page, name: "index"
     haml :index
   end
