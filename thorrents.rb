@@ -135,12 +135,12 @@ class Thorrents < Sinatra::Base
   
 
   get "/" do
-    track :page, name: "index"
+    track :page, name: "index", mp_note: "User viewed the index page"
     haml :index
   end
 
   get "/docs" do
-    track :page, name: "docs"
+    track :page, name: "docs", mp_note: "User viewed docs"
     haml :docs
   end
   
@@ -183,7 +183,7 @@ class Thorrents < Sinatra::Base
     content_type :json
     callback = request.params["callback"]
     if callback.blank?      
-      track :query, name: @query, type: "json"
+      track :query, name: @query, type: "json", mp_note: "User searched '#{@query}' via json"
       { results: results }.to_json
     else
       "#{callback}("+ { results: results }.to_json + ')'
@@ -202,7 +202,7 @@ class Thorrents < Sinatra::Base
       @fb_image = json["responseData"]["results"].first["url"]
     end
     
-    track :query, name: @query, type: "html"
+    track :query, name: @query, type: "html", mp_note: "User searched '#{@query}' via html"
     haml :result    
   end  
 
