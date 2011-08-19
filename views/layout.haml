@@ -59,8 +59,9 @@
           {{/results}}                                                           
           {{^results}}<li><div class='no_results'>No thorrents found. Thor is angry!</div></li>{{/results}}           
         </ul>
-        
-    - gauges "4e4de45e613f5d4358000006"
+      
+    %script  
+      - gauges "4e4de45e613f5d4358000006"
     - if ENV["RACK_ENV"] == "production"
       %script{ :type => "text/javascript" }
         var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
