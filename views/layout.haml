@@ -61,7 +61,7 @@
         </ul>
       
     %script  
-      - gauges "4e4de45e613f5d4358000006"
+      = gauges "4e4de45e613f5d4358000006"
     - if ENV["RACK_ENV"] == "production"
       %script{ :type => "text/javascript" }
         var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
