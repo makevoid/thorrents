@@ -16,3 +16,5 @@ gem "nokogiri"
 gem "mixpanel"
 
 gem "google-search"
+
+gem "newrelic_rpm"
