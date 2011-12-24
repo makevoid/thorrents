@@ -1,7 +1,7 @@
 
 set :application, "thorrents"
 
-#set :domain,      "krikri.makevoid.com"
+#set :domain, "kim.makevoid.com" # old: krikri.makevoid.com
 set :domain,      "ovh.makevoid.com"
 
 # git
