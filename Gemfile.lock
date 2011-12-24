@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/makevoid/voidtools
+  revision: 707a87770f52790fdd9fec1518f21dd0069681c7
+  specs:
+    voidtools (0.2.4)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -5,21 +11,22 @@ GEM
     escape (0.0.4)
     google-search (1.0.2)
       json
-    haml (3.0.25)
-    json (1.5.1)
-    mixpanel (0.8.1)
+    haml (3.1.2)
+    json (1.5.3)
+    mixpanel (0.9.0)
       escape
       json
       rack
     monkey-lib (0.5.4)
       backports
-    nokogiri (1.4.4)
-    rack (1.2.2)
-    rack-flash (0.1.1)
+    newrelic_rpm (3.1.1)
+    nokogiri (1.5.0)
+    rack (1.3.2)
+    rack-flash (0.1.2)
       rack
-    sinatra (1.2.1)
+    sinatra (1.2.6)
       rack (~> 1.1)
-      tilt (>= 1.2.2, < 2.0)
+      tilt (< 2.0, >= 1.2.2)
     sinatra-advanced-routes (0.5.1)
       monkey-lib (~> 0.5.0)
       sinatra (~> 1.0)
@@ -32,8 +39,7 @@ GEM
     sinatra-sugar (0.5.1)
       monkey-lib (~> 0.5.0)
       sinatra (~> 1.0)
-    tilt (1.2.2)
-    voidtools (0.2.2)
+    tilt (1.3.2)
 
 PLATFORMS
   ruby
@@ -42,9 +48,10 @@ DEPENDENCIES
   google-search
   haml
   mixpanel
+  newrelic_rpm
   nokogiri
   rack-flash
   sinatra
   sinatra-content-for
   sinatra-reloader
-  voidtools
+  voidtools!

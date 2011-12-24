@@ -9,10 +9,12 @@ gem 'rack-flash'
 # gem 'dm-sqlite-adapter'
 # gem 'dm-mysql-adapter'
 
-gem 'voidtools'
+gem 'voidtools', git: "git://github.com/makevoid/voidtools"
 
 gem "nokogiri"
 
 gem "mixpanel"
 
 gem "google-search"
+
+gem "newrelic_rpm"

@@ -78,6 +78,9 @@ FB_APP_ID = "192114967494018"
 
 require 'mixpanel'
 
+require 'newrelic_rpm'
+
+
 require "#{APP_PATH}/models/thorz"
 
 class Thorrents < Sinatra::Base
