@@ -1,7 +1,7 @@
 require 'haml'
 require 'sass'
 require 'sinatra/base'
-require "sinatra/reloader"
+# require "sinatra/reloader"
 require 'json'
 require 'net/https'
 
@@ -86,17 +86,19 @@ require "#{APP_PATH}/models/thorz"
 class Thorrents < Sinatra::Base
   require "#{APP_PATH}/config/env"
   
+  HOST = "thorrents.com"
+  
   configure :development do
-    register Sinatra::Reloader
-    also_reload %w(controllers models config lib).map{|f| "#{f}/*.rb" }
-    set :public, "public"
+    # register Sinatra::Reloader
+    # also_reload %w(controllers models config lib).map{|f| "#{f}/*.rb" }
+    set :public_folder, "public"
     set :static, true
   end
   
   set :haml, { :format => :html5 }
-  require 'rack-flash'
-  enable :sessions
-  use Rack::Flash
+  # enable :sessions
+  # require 'rack-flash'
+  # use Rack::Flash
   require 'sinatra/content_for'
   helpers Sinatra::ContentFor
   set :method_override, true
@@ -109,12 +111,12 @@ class Thorrents < Sinatra::Base
   # mixpanel
 
   def initialize_mixpanel
-    @mixpanel = Mixpanel.new(MIXPANEL_TOKEN, request.env, true)
+    @mixpanel = Mixpanel::Tracker.new(MIXPANEL_TOKEN, request.env, true) if request.host == HOST
   end
 
   def track(event, properties={})
     initialize_mixpanel if @mixpanel.nil?
-    @mixpanel.track_event event, properties unless ENV["RACK_ENV"] == "development"
+    @mixpanel.track_event event, properties unless ENV["RACK_ENV"] == "development" || request.host != HOST
   end
   
   
@@ -136,6 +138,10 @@ class Thorrents < Sinatra::Base
     end
   end
   
+  before do 
+    headers "Access-Control-Allow-Origin" => "*"
+  end
+  
 
   get "/" do
     track :page, name: "index", mp_note: "User viewed the index page"
@@ -155,15 +161,10 @@ class Thorrents < Sinatra::Base
     results = []
     
     unless @query.blank?
-      results = if ENV['RACK_ENV'] == "production"
-        thor = Thorz.new @query
-        thor.search
-        thor.results
-      else
-        thor = Thorz.new @query
-        thor.proxied_search
-        thor.results
-      end
+      thor = Thorz.new @query
+      thor.search
+      # thor.proxied_search if ENV["RACK_ENV"] == "development"
+      results = thor.results
     end 
     
     results    

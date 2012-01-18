@@ -23,9 +23,9 @@ $(function(){
     var query = $("#search form input[name=q]").first().val()
     var json_url = url+"/"+query+".json"
     if (rack_env == "development") {
-      json_url = "http://thorrents.com/search/"+query
-      json_url = "/fixture_no_results.json"
-      json_url = "/fixture.json"
+      json_url = "http://thorrents.com/search/"+query+".json"
+      // json_url = "/fixture_no_results.json"
+      // json_url = "/fixture.json"
     }
                 
     if (query != "") {

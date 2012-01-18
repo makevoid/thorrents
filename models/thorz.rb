@@ -12,11 +12,11 @@ class Thorz
     @results = []
   end
   
-  def proxied_search 
+  def proxied_search(host) 
     return false if @query.blank?
-    url = URI.parse "http://thorrents.com/search/#{@query}.json"
+    url = URI.parse "http://#{host}/search/#{@query}.json"
     res = nil
-    timeout(10) do 
+    timeout(5) do 
       res = Net::HTTP.get_response url
     end
     if res  
@@ -30,7 +30,7 @@ class Thorz
     url = URI.parse URL % @query
     res, reason, errror = nil
     begin
-      timeout(10) do 
+      timeout(5) do 
         res = Net::HTTP.get_response url
       end
     rescue Timeout::Error => e

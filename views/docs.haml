@@ -10,7 +10,7 @@
 
   %p the api is simple:
 
-  %p.code GET http://thorrents.com/search/SOMESTUFF.json
+  %p.code GET http://#{HOST}/search/SOMESTUFF.json
 
   %p note: your search term has to be URL encoded
 
@@ -19,7 +19,7 @@
   %p example call with curl:
 
   %p.code
-    curl http://thorrents.com/search/ubuntu.json
+    curl http://#{HOST}/search/ubuntu.json
 
   %p results returned in JSON format!
 

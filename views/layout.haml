@@ -21,7 +21,7 @@
           - link_to "View Docs", "/docs"
         #main_like.mini.right
           :plain
-            <fb:like href="http://thorrents.com" send="true" width="400" show_faces="true"></fb:like>
+            <fb:like href="http://#{HOST}" send="true" width="400" show_faces="true"></fb:like>
         %h1 
           - link_to "Thorrents", "/"
           %span Smash old fashioned HTTP downloaders! Thor agrees!
@@ -36,7 +36,7 @@
     %script{ src: "/js/jquery.js", type: "text/javascript" }
     %script{ src: "/js/moustache.js", type: "text/javascript" }
     %script{ src: "/js/main.js", type: "text/javascript" }
-    - FB_BASE_URL = "http://thorrents.com/search"
+    - FB_BASE_URL = "http://#{HOST}/search"
     %script{ type: "text/javascript" }
       var rack_env = "#{ENV["RACK_ENV"]}"
       var FB_APP_ID = "#{FB_APP_ID}"
@@ -59,10 +59,10 @@
           {{/results}}                                                           
           {{^results}}<li><div class='no_results'>No thorrents found. Thor is angry!</div></li>{{/results}}           
         </ul>
-      
-    %script  
-      = gauges "4e4de45e613f5d4358000006"
-    - if ENV["RACK_ENV"] == "production"
+        
+    - if ENV["RACK_ENV"] == "production" && request.host == HOST
+      %script  
+        = gauges "4e4de45e613f5d4358000006"
       %script{ :type => "text/javascript" }
         var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
         document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
