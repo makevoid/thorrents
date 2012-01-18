@@ -99,8 +99,7 @@ class Thorrents < Sinatra::Base
   # enable :sessions
   # require 'rack-flash'
   # use Rack::Flash
-  require 'sinatra/content_for'
-  helpers Sinatra::ContentFor
+
   set :method_override, true
 
   def not_found(object=nil)
