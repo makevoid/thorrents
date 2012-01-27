@@ -16,7 +16,7 @@
             .res.shared
               - link_to "<span class='seeds'>#{result[:seeds]}</span><span class='name'>#{result[:name]}</span>", result[:magnet]
             .fb_share
-              - url = "http://#{env.host}/search/#{@query}/#{@result}"
+              - url = "http://#{request.host}/search/#{@query}/#{@result}"
               :plain
                 <fb:like href='#{url}' layout='button_count' show_faces='false' send='true' width='150' font='lucida grande'></fb:like>
     - else
