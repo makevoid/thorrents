@@ -1,11 +1,11 @@
-%a.fork_badge{ href: "http://github.com/makevoid/thorrents"}
+%a.fork_badge{ :href => "http://github.com/makevoid/thorrents"}
 
-  %img{ src: "https://d3nwyuy0nl342s.cloudfront.net/img/7afbc8b248c68eb468279e8c17986ad46549fb71/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67", alt: "Fork me on GitHub" }
+  %img{ :src => "https://d3nwyuy0nl342s.cloudfront.net/img/7afbc8b248c68eb468279e8c17986ad46549fb71/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67", :alt => "Fork me on GitHub" }
 
 %h2 Docs
 
 .docs
-  %p Thorrents is an open source project made for fun and use, you can install it on your machine/server, you can look at the code, you can easily get a copy of (download it or fork it) and improve it! 
+  %p Thorrents is an open source project made for fun and use, you can install it on your machine/server, you can look at the code, you can easily get a copy of (download it or fork it) and improve it!
   %p Or... if you are interested in using the api you can look at these example(s).
 
   %p the api is simple:
@@ -24,6 +24,27 @@
   %p results returned in JSON format!
 
   .gist
-    %script{ src: "https://gist.github.com/1629412.js" }
+    %script{ :type => "text/javascript", :src => "https://gist.github.com/1633117.js?file=thorrents_search_results.json" }
+  
+  %h3 Social:
+
+  %p
+    This feature is still in progress: basically it has to be decided
+    Current proposals:
+    fb connect and fb like/share button that appears after you downloaded a file ... most likely to happen
+    other internal ranking counting most downloaded thorrents ... unlikely to happen
+
+  %h3 Extra:
+  
+  %p
+
+    %span Embed this code in your page (without body and html tags) to show torrents results of some custom search (with jQuery) [
+
+    %a.demo{ :href => "http://pastehtml.com/view/bl1ad6k4f.html"} Demo
+
+    %span ]
+
+  .gist
+    %script{ :type => "text/javascript", :src => "https://gist.github.com/1633117.js?file=thorrents_jsonp_embed.html" }
   
   %p p.s. yes, the api supports JSONP requests with callback
