@@ -50,6 +50,8 @@ class Thorz
 
         @results << {name: name, magnet: magnet, seeds: seeds}
       end
+    else
+      @results << { name: "an error occcurred, maybe TPB server is down", magnet: "#", seeds: 0}
     end
     #puts @results
     true

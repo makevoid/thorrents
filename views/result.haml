@@ -1,3 +1,7 @@
+- unless @results.nil? || @results == []
+  - content_for :jquery do
+    $("#thor_bg").fadeIn("slow")
+
 = haml :"_search"
 
 #results

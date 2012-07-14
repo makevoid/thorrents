@@ -46,13 +46,6 @@
 
     = haml :"_fb_events"
     %script{ src: "/js/search.js", type: "text/javascript" }
-
-    %script{ type: "text/javascript" }
-      $(function(){
-      - unless @results.nil? || @results == []
-        - content_for :jquery do
-          $("#thor_bg").fadeIn("slow")
-      });
     %script#result_tmpl{ type: "text/x-moustache-tmpl" }
       :plain
         <ul>
