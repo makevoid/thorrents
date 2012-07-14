@@ -27,14 +27,14 @@ module KeysSymbolizer
   def symbolize_keys!
     self.replace(self.symbolize_keys)
   end
-  
+
   def symbolize_keys
     inject({}) do |options, (key, value)|
       options[(key.to_sym rescue key) || key] = value
       options
     end
   end
-  
+
   def recursive_symbolize_keys!
     symbolize_keys!
     # symbolize each hash in .values
@@ -54,7 +54,7 @@ class String
     # self.split("_").map{ |w| w.capitalize }.join(" ").capitalize
     self.split("_").join(" ").capitalize
   end
-  
+
   def urlize
     # js: self.replace(/[^a-z0-9]+/gi, " ").trim().replace(/\s/g, "_").toLowerCase()
     self.gsub(/[^a-z0-9]+/i, ' ').strip.gsub(/\s/, "_").downcase
@@ -65,7 +65,7 @@ class NilClass
   def titleize
     nil
   end
-  
+
   def urlize
     nil
   end
@@ -85,16 +85,16 @@ require "#{APP_PATH}/models/thorz"
 
 class Thorrents < Sinatra::Base
   require "#{APP_PATH}/config/env"
-  
+
   HOST = "thorrents.com"
-  
+
   configure :development do
     # register Sinatra::Reloader
     # also_reload %w(controllers models config lib).map{|f| "#{f}/*.rb" }
     set :public_folder, "public"
     set :static, true
   end
-  
+
   set :haml, { :format => :html5 }
   # enable :sessions
   # require 'rack-flash'
@@ -106,8 +106,8 @@ class Thorrents < Sinatra::Base
   def not_found(object=nil)
     halt 404, "404 - Page Not Found"
   end
-  
-  
+
+
   # mixpanel
 
   def initialize_mixpanel
@@ -118,30 +118,30 @@ class Thorrents < Sinatra::Base
     initialize_mixpanel if @mixpanel.nil?
     @mixpanel.track_event event, properties unless ENV["RACK_ENV"] == "development" || request.host != HOST
   end
-  
-  
-  helpers do    
+
+
+  helpers do
     def in_search
       /^\/search\/(.+)/
     end
-    
+
     def meta_description
-      request.path =~ in_search ? "Download thorrent with magnet link!" : "Thorrents is a search engine for magnet links that uses TPB as a source! Now you can share your favourite magnet links via Facebook!"
+      request.path =~ in_search ? "Download thorrent with magnet link!" : "Thorrents is a social magnet links search engine. Now you can share music/movies/software with your friends! Remember to buy things if you like them!"
     end
-    
+
     def search_title
       if request.path =~ in_search
-        " search: #{CGI.escape $1}" 
+        " search: #{CGI.escape $1}"
       else
         " - Smash old fashioned HTTP downloaders! Thor agrees!"
       end
     end
   end
-  
-  before do 
+
+  before do
     headers "Access-Control-Allow-Origin" => "*"
   end
-  
+
 
   get "/" do
     track :page, name: "index", mp_note: "User viewed the index page"
@@ -152,66 +152,66 @@ class Thorrents < Sinatra::Base
     track :page, name: "docs", mp_note: "User viewed docs"
     haml :docs
   end
-  
+
   get "/recommended_clients" do
     haml :recommended_clients
   end
-  
-  def load_results    
+
+  def load_results
     results = []
-    
+
     unless @query.blank?
       thor = Thorz.new @query
       thor.search
       # thor.proxied_search if ENV["RACK_ENV"] == "development"
       results = thor.results
-    end 
-    
-    results    
+    end
+
+    results
   end
-  
+
   def https(url)
-    uri = URI.parse url 
-    http = Net::HTTP.new uri.host, uri.port 
+    uri = URI.parse url
+    http = Net::HTTP.new uri.host, uri.port
     http.use_ssl = true
     http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-    request = Net::HTTP::Get.new uri.request_uri 
-    response = http.request request 
+    request = Net::HTTP::Get.new uri.request_uri
+    response = http.request request
   end
-  
-  
-  get '/search/:query.json' do 
+
+
+  get '/search/:query.json' do
     @query = params[:query]
     results = load_results
 
     content_type :json
     callback = request.params["callback"]
-    if callback.blank?      
+    if callback.blank?
       track :query, name: @query, type: "json", mp_note: "User searched '#{@query}' via json"
       { results: results }.to_json
     else
       "#{callback}("+ { results: results }.to_json + ')'
     end
-  end  
-  
+  end
+
   get '/search*' do |query|
     query = query.gsub(/^\//, '')
     @query, @result = query.split "/"
     @results = load_results
-    
+
     if request.user_agent =~ /facebook/ || params[:fb]
       url = "https://ajax.googleapis.com/ajax/services/search/images?v=1.0&rsz=1&imgsz=medium&q=#{@query.gsub(/\s/, "%20")}"
       response = https(url)
       json = JSON.parse(response.body)
       @fb_image = json["responseData"]["results"].first["url"]
     end
-    
+
     track :query, name: @query, type: "html", mp_note: "User searched '#{@query}' via html"
-    haml :result    
-  end  
+    haml :result
+  end
 
   get '/css/main.css' do
     sass :main
   end
-  
+
 end
