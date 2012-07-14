@@ -2,7 +2,7 @@
 set :application, "thorrents"
 
 #set :domain, "kim.makevoid.com" # old: krikri.makevoid.com
-set :domain,      "makevoid.com"
+set :domain,      "kim.makevoid.com"
 
 # git
 
@@ -34,12 +34,12 @@ after :deploy, "deploy:cleanup"
 after :deploy, "deploy:newrelic_secret"
 
 namespace :deploy do
-  
+
   desc "Restart Application"
   task :restart, :roles => :app do
     run "touch #{current_path}/tmp/restart.txt"
   end
-  
+
   desc "Setup newrelic license key"
   task :newrelic_secret do
     newrelic_key = File.read(File.expand_path '~/.newrelic').strip
@@ -52,7 +52,7 @@ namespace :bundle do
   task :install do
     run "cd #{current_path}; bundle install --relock"
   end
-  
+
   desc "Commit, deploy and install"
   task :installscom do
     `svn commit -m ''`
@@ -69,16 +69,16 @@ namespace :bundler do
     release_dir = File.join(current_release, '.bundle')
     run("mkdir -p #{shared_dir} && ln -s #{shared_dir} #{release_dir}")
   end
-  
+
   task :bundle_new_release, :roles => :app do
     bundler.create_symlink
     run "cd #{release_path} && bundle install --without test"
   end
-  
+
   task :lock, :roles => :app do
     run "cd #{current_release} && bundle lock;"
   end
-  
+
   task :unlock, :roles => :app do
     run "cd #{current_release} && bundle unlock;"
   end
@@ -105,17 +105,17 @@ namespace :db do
   task :create do
     run "mysql -u root --password=#{password} -e 'CREATE DATABASE IF NOT EXISTS #{application}_production;'"
   end
-  
+
   desc "Seed database"
   task :seeds do
     run "cd #{current_path}; #{R_ENV}=production rake db:seeds"
   end
-  
+
   desc "Migrate database"
   task :automigrate do
     run "cd #{current_path}; #{R_ENV}=production rake db:automigrate --trace"
   end
-  
+
   desc "Send the local db to production server"
   task :toprod do
     # `rake db:seeds`
@@ -123,7 +123,7 @@ namespace :db do
     upload "db/#{application}_development.sql", "#{current_path}/db", :via => :scp
     run "mysql -u root --password=#{password} #{application}_production < #{current_path}/db/#{application}_development.sql"
   end
-  
+
   desc "Get the remote copy of production db"
   task :todev do
     run "mysqldump -u root --password=#{password} #{application}_production > #{current_path}/db/#{application}_production.sql"
