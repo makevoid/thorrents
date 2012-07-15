@@ -47,3 +47,4 @@ enjoy!
 - Francesco 'makevoid' Canessa - [makevoid.com](http://makevoid.com) 
 - Jacopo Santoni - [jacoposantoni.com](http://jacoposantoni.com) for the concept
 - Nimrod S.Kerret - [@thedod](https://github.com/thedod) helped with docs and example
+- Daniel Olsen - [weremole.deviantart.com](http://weremole.deviantart.com/) for the thor background image
