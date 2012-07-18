@@ -182,7 +182,8 @@ class Thorrents < Sinatra::Base
     @query = params[:query]
     results = load_results
 
-    content_type :json
+    #content_type :json
+    content_type "application/javascript"
     callback = request.params["callback"]
     if callback.blank?
       track :query, name: @query, type: "json", mp_note: "User searched '#{@query}' via json"
