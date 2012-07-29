@@ -34,6 +34,11 @@
       %footer
 
     %script{ src: "/js/jquery.js", type: "text/javascript" }
+    - unless @results.nil? || @results == []
+      :javascript
+        $(function(){
+          $("#thor_bg").fadeIn("slow")
+        })
     %script{ src: "/js/moustache.js", type: "text/javascript" }
     - FB_BASE_URL = "http://#{HOST}/search"
     %script{ type: "text/javascript" }

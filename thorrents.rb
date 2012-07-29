@@ -196,7 +196,6 @@ class Thorrents < Sinatra::Base
   get '/search*' do |query|
     query = query.gsub(/^\//, '')
     @query, @result = query.split "/"
-    @query.gsub!(/_+/, '_')
     @results = load_results
 
     if request.user_agent =~ /facebook/ || params[:fb]
@@ -207,6 +206,7 @@ class Thorrents < Sinatra::Base
     end
 
     track :query, name: @query, type: "html", mp_note: "User searched '#{@query}' via html"
+    @query.gsub!(/_+/, ' ')
     haml :result
   end
 

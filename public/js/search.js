@@ -101,7 +101,7 @@ $(function(){
     state = event.state
     //console.log(state)
     if (state && state.action.search) {
-      $("#search form input[name=q]").val(query)
+      $("#search form input[name=q]").val(state.action.search)
       do_search("noPush")
     } else {
       if (state) {
