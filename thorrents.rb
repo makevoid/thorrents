@@ -196,6 +196,7 @@ class Thorrents < Sinatra::Base
   get '/search*' do |query|
     query = query.gsub(/^\//, '')
     @query, @result = query.split "/"
+    @query.gsub!(/_+/, '_')
     @results = load_results
 
     if request.user_agent =~ /facebook/ || params[:fb]
