@@ -210,8 +210,4 @@ class Thorrents < Sinatra::Base
     haml :result
   end
 
-  get '/css/main.css' do
-    sass :main
-  end
-
 end

@@ -20,3 +20,9 @@ gem "mixpanel"
 gem "google-search"
 
 gem "newrelic_rpm"
+
+group :development do
+  gem "guard"
+  gem "guard-sass"
+  gem "guard-livereload"
+end
