@@ -4,3 +4,5 @@
 .pid
 .sass-cache
 log
+node_modules
+packages

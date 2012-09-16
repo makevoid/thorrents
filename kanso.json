@@ -1,0 +1,24 @@
+{
+  "name": "Thorrents",
+  "version": "0.1.0",
+  "attachments": ["public", "graphics"],
+  "icons": {
+    "16":   "graphics/icons/icon_x16.png",
+    "48":   "graphics/icons/icon_x48.png",
+    "96":   "graphics/icons/icon_x96.png",
+    "128":  "graphics/icons/icon_x128.png"
+  },
+  "dependencies": {
+    "attachments": null
+  },
+  "categories": ["file_sharing", "productivity"],
+  "description": "Smash old fashioned HTTP downloaders! Thor agrees!",
+  "long_description": "Thorrents is a tpb magnet links proxy. It has a json api and is fully open source: https://github.com/makevoid/thorrents",
+  "url": "https://github.com/makevoid/thorrents",
+  "screenshots": [
+    "graphics/thorrents_screenshot.png" 
+  ],
+  "promo_images": {
+    "small": "graphics/thorrents_promo_image.png"
+  }
+}
