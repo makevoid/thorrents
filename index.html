@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang='en_EN' xml:lang='en_EN' xmlns='http://www.w3.org/1999/xhtml'>
+  <head>
+    <title>Thorrents - Smash old fashioned HTTP downloaders! Thor agrees!</title>
+    <link href='/css/main.css' rel='stylesheet'>
+    <meta charset='utf-8'>
+    <meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'>
+    <meta content='Thorrents is a search engine for magnet links that uses TPB as a source! Now you can share your favourite magnet links via Facebook!' name='description'>
+    <meta content='thorrents, thor, torrents, magnet, links, tpb, opensource, fb, facebook, sharing, like' name='keywords'>
+    <meta content="Francesco 'makevoid' Canessa" name='author'>
+    <meta content='Thorrents' property='og:title'>
+    <meta content='http://thorrents.com' property='og:url'>
+    <meta content='website' property='og:type'>
+    <meta content='Thorrents' property='og:site_name'>
+    <meta content='http://thorrents.com/imgs/thor_hammer_icon.png' property='og:image'>
+    <meta content='makevoid' property='fb:admins'>
+    <script src='/js/modernizr.js' type='text/javascript'></script>
+  </head>
+  <body>
+    <div id='container'>
+      <header>
+        <div class='mini right'>
+          <p>Thorrents is mainly a TPB social JSON API + GUI</p>
+          <a href='/recommended_clients'>Recommended Clients</a>
+          -
+          <a href='/docs'>View Docs</a>
+        </div>
+        <div class='mini right' id='main_like'>
+          <fb:like href="http://thorrents.com" send="true" width="400" show_faces="true"></fb:like>
+        </div>
+        <h1>
+          <a href='/'>Thorrents</a>
+          <span>Smash old fashioned HTTP downloaders! Thor agrees!</span>
+        </h1>
+      </header>
+      <nav></nav>
+      <div id='thor_bg'>
+        <img src='/imgs/thor_bg.png' />
+      </div>
+      <div id='content'>
+        <div id='search'>
+          <div id='spinner'>
+            <img src='/imgs/spinner.gif' />
+          </div>
+          <form method='get'>
+            <input name='q' type='search'>
+            <input class='submit' type='submit' value='search'>
+          </form>
+        </div>
+        <div id='results'>
+          <ul>
+            <li></li>
+          </ul>
+        </div>
+        <div class='clear'></div>
+        <!--
+          <div id='advices'>
+            <p>Recommended clients:</p>
+            <ul>
+              <li>Transmission (mac/linux)</li>
+              <li>uTorrent (windows)</li>
+            </ul>
+          </div>
+        -->
+      </div>
+      <footer></footer>
+    </div>
+    <script src='/js/jquery.js' type='text/javascript'></script>
+    <script src='/js/moustache.js' type='text/javascript'></script>
+    <script src='/js/main.js' type='text/javascript'></script>
+    <script type='text/javascript'>
+      var rack_env = "development"
+      var FB_APP_ID = "192114967494018"
+      var thorrent = ""
+      var fb_base_url = "http://thorrents.com/search"
+      var fb_share_url = fb_base_url+"//"
+    </script>
+    <div id='fb-root'></div>
+    <script>
+      //<![CDATA[
+        window.fbAsyncInit = function() {
+          FB.init({appId: '192114967494018', status: true, cookie: true, xfbml: true});
+
+          FB.Event.subscribe('edge.create', function(href, widget) {
+            //console.log("voted: "+href)
+          });
+          FB.Canvas.setAutoResize(150);
+        };
+        (function() {
+          var e = document.createElement('script'); e.async = true;
+          e.src = document.location.protocol +
+            '//connect.facebook.net/en_US/all.js';
+          document.getElementById('fb-root').appendChild(e);
+        }());
+      //]]>
+    </script>
+    <script src='/js/search.js' type='text/javascript'></script>
+    <script type='text/javascript'>
+      $(function(){
+      });
+    </script>
+    <script id='result_tmpl' type='text/x-moustache-tmpl'>
+      <ul>
+        <li class='heading'><span>Seeds</span></li>
+        {{#results}}
+          <li>
+            <div class='res'><a href='{{magnet}}'><span class='seeds'>{{seeds}}</span><span class='name'>{{name}}</span></a></div>
+          </li>
+        {{/results}}
+        {{^results}}<li><div class='no_results'>No thorrents found. Thor is angry!</div></li>{{/results}}
+      </ul>
+    </script>
+  </body>
+</html>

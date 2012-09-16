@@ -30,11 +30,10 @@ $(function(){
 
     if (query != "") {
       if (mod != "noPush") {
-        query = query.replace(/\s+/, "_")
         var stateObj = { action: { search: query } };
         var title = "Thorrents search: "+query
         if (history.pushState)
-          history.pushState(stateObj, title, "/search/"+query);
+          history.pushState(stateObj, title, "#/search/"+query);
         $("title").html(title)
       }
 
@@ -134,7 +133,7 @@ $(function(){
     var stateObj = { action: { search: query } };
     var title = "Thorrents search: "+query
     if (history.pushState)
-      history.pushState(stateObj, title, "/search/"+query+"/"+result);
+      history.pushState(stateObj, title, "#/search/"+query+"/"+result);
     $("title").html(title)
 
     // meta tags
