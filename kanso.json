@@ -1,7 +1,7 @@
 {
   "name": "Thorrents",
-  "version": "0.1.0",
-  "attachments": ["public", "graphics"],
+  "version": "0.1.2",
+  "attachments": ["css", "js", "imgs", "graphics", "index.html"],
   "icons": {
     "16":   "graphics/icons/icon_x16.png",
     "48":   "graphics/icons/icon_x48.png",
@@ -16,7 +16,7 @@
   "long_description": "Thorrents is a tpb magnet links proxy. It has a json api and is fully open source: https://github.com/makevoid/thorrents",
   "url": "https://github.com/makevoid/thorrents",
   "screenshots": [
-    "graphics/thorrents_screenshot.png" 
+    "graphics/thorrents_screenshot.png"
   ],
   "promo_images": {
     "small": "graphics/thorrents_promo_image.png"
