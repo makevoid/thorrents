@@ -2,11 +2,11 @@
 :javascript
   window.fbAsyncInit = function() {
     FB.init({appId: '#{FB_APP_ID}', status: true, cookie: true, xfbml: true});
-           
+
     FB.Event.subscribe('edge.create', function(href, widget) {
       //console.log("voted: "+href)
     });
-    FB.Canvas.setAutoResize(150);
+    / FB.Canvas.setAutoResize(150);
   };
   (function() {
     var e = document.createElement('script'); e.async = true;
@@ -14,4 +14,4 @@
       '//connect.facebook.net/en_US/all.js';
     document.getElementById('fb-root').appendChild(e);
   }());
-    
+
