@@ -3,7 +3,7 @@ require 'cgi'
 require 'nokogiri'
 
 class Thorz
-  URL = "http://thepiratebay.gl/search/%s/0/7/0"
+  URL = "http://piratebay.org/search/%s/0/7/0"
 
   attr_reader :results
 
