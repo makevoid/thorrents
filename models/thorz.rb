@@ -2,10 +2,14 @@ require 'net/http'
 require 'cgi'
 require 'nokogiri'
 
+
+
 class Thorz
   # HOST = "thepiratebay.se"
   HOST = "piratebay.org"
   URL = "http://#{HOST}/search/%s/0/7/0"
+
+  TIMEOUT = 5
 
   attr_reader :results
 
@@ -18,7 +22,7 @@ class Thorz
     return false if @query.blank?
     url = URI.parse "http://#{host}/search/#{@query}.json"
     res = nil
-    timeout(5) do
+    timeout(TIMEOUT) do
       res = Net::HTTP.get_response url
     end
     if res
@@ -32,8 +36,8 @@ class Thorz
     url = URI.parse URL % @query
     res, reason, errror = nil
     begin
-      timeout(5) do
-        res = Net::HTTP.get_response url
+      timeout(TIMEOUT) do
+        res = get url
       end
     rescue Timeout::Error => e
       reason = "Timeout", error = e
@@ -57,6 +61,16 @@ class Thorz
     end
     #puts @results
     true
+  end
+
+  private
+
+  def get(uri)
+     resp = Net::HTTP.get_response uri
+     if resp.code == "301"
+       resp = Net::HTTP.get_response URI.parse(r.header['location'])
+     end
+     resp
   end
 end
 
