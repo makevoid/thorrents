@@ -68,7 +68,7 @@ class Thorz
   def get(uri)
      resp = Net::HTTP.get_response uri
      if resp.code == "301"
-       resp = Net::HTTP.get_response URI.parse(r.header['location'])
+       resp = Net::HTTP.get_response URI.parse(resp.header['location'])
      end
      resp
   end
