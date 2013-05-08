@@ -1,0 +1,15 @@
+{
+  "name":"Thorrents",
+  "description":"Smash old fashioned HTTP downloaders! Thor agrees!",
+  "version":"9",
+  "launch_path":"/",
+  "icons":{
+    "128":  "/imgs/thorrents_icon_128.png",
+    "60":   "/imgs/thorrents_icon_60.png",
+    "30":   "/imgs/thorrents_icon_30.png"
+  },
+  "developer": { 
+    "name":"makevoid", 
+    "url":"http://makevoid.com" 
+  }
+}
