@@ -5,8 +5,8 @@ require 'nokogiri'
 
 
 class Thorz
-  # HOST = "thepiratebay.se"
-  HOST = "piratebay.org"
+  HOST = "thepiratebay.se"
+  # HOST = "piratebay.org"
   URL = "http://#{HOST}/search/%s/0/7/0"
 
   TIMEOUT = 5
