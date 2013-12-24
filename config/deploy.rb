@@ -31,7 +31,7 @@ role :db,  domain, :primary => true
 
 after :deploy, "deploy:cleanup"
 #after :deploy, "db:seeds"
-after :deploy, "deploy:newrelic_secret"
+# after :deploy, "deploy:newrelic_secret"
 
 namespace :deploy do
 
