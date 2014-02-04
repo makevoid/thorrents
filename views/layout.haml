@@ -62,15 +62,16 @@
           {{^results}}<li><div class='no_results'>No thorrents found. Thor is angry!</div></li>{{/results}}
         </ul>
 
-    - if ENV["RACK_ENV"] == "production" && request.host == HOST
-      %script
-        = gauges "4e4de45e613f5d4358000006"
-      %script{ :type => "text/javascript" }
-        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-      %script{ :type => "text/javascript" }
-        try {
-        var pageTracker = _gat._getTracker("UA-10682634-10");
-        pageTracker._trackPageview();
-        } catch(err) {}
+    - if false # fuck analytics
+      - if ENV["RACK_ENV"] == "production" && request.host == HOST
+        %script
+          = gauges "4e4de45e613f5d4358000006"
+        %script{ :type => "text/javascript" }
+          var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+          document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+        %script{ :type => "text/javascript" }
+          try {
+          var pageTracker = _gat._getTracker("UA-10682634-10");
+          pageTracker._trackPageview();
+          } catch(err) {}
 
