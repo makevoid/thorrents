@@ -76,9 +76,9 @@ end
 
 FB_APP_ID = "192114967494018"
 
-require 'mixpanel'
+#require 'mixpanel'
 
-require 'newrelic_rpm'
+#require 'newrelic_rpm'
 
 
 require "#{APP_PATH}/models/thorz"

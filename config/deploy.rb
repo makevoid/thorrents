@@ -40,11 +40,7 @@ namespace :deploy do
     run "touch #{current_path}/tmp/restart.txt"
   end
 
-  desc "Setup newrelic license key"
-  task :newrelic_secret do
-    newrelic_key = File.read(File.expand_path '~/.newrelic').strip
-    run "ruby -e \"path = '#{current_path}/config'; db_yaml = File.read(path+'/newrelic.yml'); File.open(path+'/newrelic.yml', 'w'){ |f| f.write db_yaml.gsub(/LICENSE_KEY/, '#{newrelic_key}') }\""
-  end
+
 end
 
 namespace :bundle do
