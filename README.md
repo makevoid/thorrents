@@ -12,7 +12,7 @@ The tHorrents are coming from tpb, that is still blocked in some countries like 
 
 ### JSON API Documentation
 
-[thorrents.com/docs](http://thorrents.com/docs) 
+[thorrents.com/docs](http://thorrents.com/docs)
 
 ### Installation
 
@@ -28,6 +28,8 @@ clone the repo, install the dependencies and run
     RACK_ENV=production rackup
 
 the default rack server starts at http://localhost:9292
+
+open `models/thorz.rb` and fill the HOST constant (you can uncomment one of the lines above)
 
 If you are in Italy or in another place of the world where you can't access to tpb use:
 
@@ -47,7 +49,7 @@ enjoy!
 
 ### Credits
 
-- Francesco 'makevoid' Canessa - [makevoid.com](http://makevoid.com) 
+- Francesco 'makevoid' Canessa - [makevoid.com](http://makevoid.com)
 - Jacopo Santoni - [jacoposantoni.com](http://jacoposantoni.com) for the concept
 - Nimrod S.Kerret - [@thedod](https://github.com/thedod) helped with docs and example
 - Daniel Olsen - [weremole.deviantart.com](http://weremole.deviantart.com/) for the thor background image

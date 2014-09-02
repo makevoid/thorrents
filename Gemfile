@@ -15,11 +15,11 @@ gem 'voidtools', git: "git://github.com/makevoid/voidtools"
 
 gem "nokogiri"
 
-gem "mixpanel"
+# gem "mixpanel"
 
-gem "google-search"
+# gem "google-search"
 
-gem "newrelic_rpm"
+# gem "newrelic_rpm"
 
 group :development do
   gem "guard"

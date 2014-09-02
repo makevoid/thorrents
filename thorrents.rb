@@ -109,12 +109,12 @@ class Thorrents < Sinatra::Base
   # mixpanel
 
   def initialize_mixpanel
-    @mixpanel = Mixpanel::Tracker.new(MIXPANEL_TOKEN, request.env, true) if request.host == HOST
+    # @mixpanel = Mixpanel::Tracker.new(MIXPANEL_TOKEN, request.env, true) if request.host == HOST
   end
 
   def track(event, properties={})
-    initialize_mixpanel if @mixpanel.nil?
-    @mixpanel.track_event event, properties unless ENV["RACK_ENV"] == "development" || request.host != HOST
+    # initialize_mixpanel if @mixpanel.nil?
+    # @mixpanel.track_event event, properties unless ENV["RACK_ENV"] == "development" || request.host != HOST
   end
 
 

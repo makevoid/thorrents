@@ -7,7 +7,8 @@ require 'nokogiri'
 class Thorz
   # HOST = "thepiratebay.se"
   # HOST = "piratebay.org"
-  HOST = "pirateproxy.in"
+  # HOST = "pirateproxy.in"
+  HOST = "" # USE ONE OF THE ABOVE HOST here
 
   URL = "http://#{HOST}/search/%s/0/7/0"
 
