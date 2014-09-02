@@ -1,9 +1,7 @@
 # Thorrents
 ## Take the torrent power back! Smash HTTP downloads! Thor agrees!
 
-![](http://thorrents.com/screenshots/thorrents_screen1.png)
 
-![](http://thorrents.com/screenshots/thorrents_screen2.png)
 
 domain:
 [thorrents.com](http://thorrents.com)
