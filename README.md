@@ -1,9 +1,13 @@
 # Thorrents
 ## Take the torrent power back! Smash HTTP downloads! Thor agrees!
 
+main code:
+## https://github.com/makevoid/thorrents/blob/master/models/thorz.rb
 
+usage:
+## https://github.com/makevoid/thorrents/blob/master/thorrents.rb#L161
 
-domain:
+old domain:
 [thorrents.com](http://thorrents.com)
 
 The tHorrents are coming from tpb, that is still blocked in some countries like Italy, that's why this project makes some sense somewhere.
