@@ -156,16 +156,12 @@ class Thorrents < Sinatra::Base
   end
 
   def load_results
-    results = []
-
     unless @query.blank?
       thor = Thorz.new @query
       thor.search
       # thor.proxied_search if ENV["RACK_ENV"] == "development"
-      results = thor.results
-    end
-
-    results
+      thor.results
+    end || []
   end
 
   def https(url)
