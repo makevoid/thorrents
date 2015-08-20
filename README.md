@@ -12,9 +12,11 @@ old domain:
 
 The tHorrents are coming from tpb, that is still blocked in some countries like Italy, that's why this project makes some sense somewhere.
 
-### JSON API Documentation
+### JSON API Documentation 
 
-[thorrents.com/docs](http://thorrents.com/docs)
+#### https://github.com/makevoid/thorrents/blob/master/views/docs.haml
+
+[thorrents.com/docs](http://thorrents.com/docs) (probably offline)
 
 ### Installation
 
