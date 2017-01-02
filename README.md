@@ -41,7 +41,7 @@ If you are in Italy or in another place of the world where you can't access to t
 
 to boot it in development mode, that uses thorrents.com JSON api to proxy the results.
 
-enjoy!
+Enjoy!
 
 
 ### Features
