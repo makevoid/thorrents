@@ -74,49 +74,24 @@ end
 
 # app
 
-FB_APP_ID = "192114967494018"
-
-#require 'mixpanel'
-
-#require 'newrelic_rpm'
-
-
 require "#{APP_PATH}/models/thorz"
 
 class Thorrents < Sinatra::Base
   require "#{APP_PATH}/config/env"
 
-  HOST = "thorrents.com"
+  HOST = "localhost:3000"
 
   configure :development do
-    # register Sinatra::Reloader
-    # also_reload %w(controllers models config lib).map{|f| "#{f}/*.rb" }
     set :public_folder, "public"
     set :static, true
   end
 
   set :haml, { :format => :html5 }
-  # enable :sessions
-  # require 'rack-flash'
-  # use Rack::Flash
   set :method_override, true
 
   def not_found(object=nil)
     halt 404, "404 - Page Not Found"
   end
-
-
-  # mixpanel
-
-  def initialize_mixpanel
-    # @mixpanel = Mixpanel::Tracker.new(MIXPANEL_TOKEN, request.env, true) if request.host == HOST
-  end
-
-  def track(event, properties={})
-    # initialize_mixpanel if @mixpanel.nil?
-    # @mixpanel.track_event event, properties unless ENV["RACK_ENV"] == "development" || request.host != HOST
-  end
-
 
   helpers do
     def in_search
@@ -136,18 +111,23 @@ class Thorrents < Sinatra::Base
     end
   end
 
+
+  # hooks
+
   before do
     headers "Access-Control-Allow-Origin" => "*"
   end
 
+  # TODO: use function instead of hook as it will be faster - or switch to roda
+
+
+  # routes
 
   get "/" do
-    track :page, name: "index", mp_note: "User viewed the index page"
     haml :index
   end
 
   get "/docs" do
-    track :page, name: "docs", mp_note: "User viewed docs"
     haml :docs
   end
 
@@ -159,7 +139,6 @@ class Thorrents < Sinatra::Base
     unless @query.blank?
       thor = Thorz.new @query
       thor.search
-      # thor.proxied_search if ENV["RACK_ENV"] == "development"
       thor.results
     end || []
   end
@@ -173,7 +152,6 @@ class Thorrents < Sinatra::Base
     response = http.request request
   end
 
-
   get '/search/:query.json' do
     @query = params[:query]
     results = load_results
@@ -182,7 +160,6 @@ class Thorrents < Sinatra::Base
     content_type "application/javascript"
     callback = request.params["callback"]
     if callback.blank?
-      track :query, name: @query, type: "json", mp_note: "User searched '#{@query}' via json"
       { results: results }.to_json
     else
       "#{callback}("+ { results: results }.to_json + ')'
@@ -194,16 +171,20 @@ class Thorrents < Sinatra::Base
     @query, @result = query.split "/"
     @results = load_results
 
-    if request.user_agent =~ /facebook/ || params[:fb]
-      url = "https://ajax.googleapis.com/ajax/services/search/images?v=1.0&rsz=1&imgsz=medium&q=#{@query.gsub(/\s/, "%20")}"
-      response = https(url)
-      json = JSON.parse(response.body)
-      @fb_image = json["responseData"]["results"].first["url"]
-    end
-
-    track :query, name: @query, type: "html", mp_note: "User searched '#{@query}' via html"
     @query.gsub!(/_+/, ' ')
+
     haml :result
   end
+
+  # TODO: move search route up for speed
+
+  # NOTE: this was an interesting idea:
+  # def load_results_alt
+  #   unless @query.blank?
+  #     thor = Thorz.new @query
+  #     thor.proxied_search if ENV["RACK_ENV"] == "development"
+  #     thor.results
+  #   end || []
+  # end
 
 end
