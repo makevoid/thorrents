@@ -43,10 +43,8 @@
     - FB_BASE_URL = "http://#{HOST}/search"
     %script{ type: "text/javascript" }
       var rack_env = "#{ENV["RACK_ENV"]}"
-      var FB_APP_ID = "#{FB_APP_ID}"
       var thorrent = "#{@result}"
       var fb_base_url = "#{FB_BASE_URL}"
-      var fb_share_url = fb_base_url+"#{"/#{@query}/#{@result}"}"
 
     = haml :"_fb_events"
     %script{ src: "/js/search.js", type: "text/javascript" }
@@ -74,4 +72,3 @@
           var pageTracker = _gat._getTracker("UA-10682634-10");
           pageTracker._trackPageview();
           } catch(err) {}
-
