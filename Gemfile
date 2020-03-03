@@ -5,21 +5,14 @@ gem "json"
 gem 'haml'
 gem "sass"
 gem 'sinatra'
-# gem "sinatra-reloader"
+gem 'rake'
 gem 'rack-flash'
-# gem 'dm-core'
-# gem 'dm-sqlite-adapter'
-# gem 'dm-mysql-adapter'
 
 gem 'voidtools', git: "git://github.com/makevoid/voidtools"
 
 gem "nokogiri"
 
-# gem "mixpanel"
-
-# gem "google-search"
-
-# gem "newrelic_rpm"
+gem "puma"
 
 group :development do
   gem "guard"
