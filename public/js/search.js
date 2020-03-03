@@ -18,14 +18,11 @@ $(function(){
   }
 
   function do_search(mod) {
-    //var url = $(this).attr("action")
     var url = "/search"
     var query = $("#search form input[name=q]").first().val()
     var json_url = url+"/"+query+".json"
     if (rack_env == "development") {
-      json_url = "http://thorrents.com/search/"+query+".json"
-      // json_url = "/fixture_no_results.json"
-      // json_url = "/fixture.json"
+      json_url = "http://localhost:3000/search/"+query+".json"
     }
 
     if (query != "") {
@@ -54,7 +51,7 @@ $(function(){
       })
     } else {
       $("#thor_bg").fadeOut("slow")
-      if (mod != "noPush") { // FIXME: home????
+      if (mod != "noPush") {
         var title = "Thorrents"
         var stateObj = { action: {} }
         if (history.pushState)
@@ -99,7 +96,6 @@ $(function(){
 
   window.onpopstate = function(event){
     state = event.state
-    //console.log(state)
     if (state && state.action.search) {
       $("#search form input[name=q]").val(state.action.search)
       do_search("noPush")
@@ -125,9 +121,6 @@ $(function(){
 
     $(".fb_share").remove()
     $(this).parent().find(".fb_share").remove()
-    var fb_like = "<fb:like href='"+fb_base_url+"/"+query+"/"+result+"' layout='button_count' show_faces='false' send='true' width='150' font='lucida grande'></fb:like>"
-    $(this).parent().append("<div class='fb_share'>"+fb_like+"</div>")
-    FB.init({appId: FB_APP_ID, status: true, cookie: true, xfbml: true});
 
     // adding result to history
     var query = $("#search form input[name=q]").first().val()
@@ -144,7 +137,6 @@ $(function(){
 
     if (url)
       document.location = url
-
 
     evt.preventDefault()
   })
