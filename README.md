@@ -12,7 +12,7 @@ old domain:
 
 The tHorrents are coming from tpb, that is still blocked in some countries like Italy, that's why this project makes some sense somewhere.
 
-### JSON API Documentation 
+### JSON API Documentation
 
 #### https://github.com/makevoid/thorrents/blob/master/views/docs.haml
 
@@ -39,7 +39,7 @@ If you are in Italy or in another place of the world where you can't access to t
 
     rackup
 
-to boot it in development mode, that uses thorrents.com JSON api to proxy the results.
+to boot it in development mode (your host will need to have access TPB).
 
 enjoy!
 
